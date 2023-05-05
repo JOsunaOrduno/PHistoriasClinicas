@@ -10,6 +10,7 @@ var retBtn = document.getElementById("return");
 var vConfBtn = document.getElementById("visiConfirm");
 var regBtn = document.getElementById("registrar");
 var navB = document.getElementById("navD");
+var navC = document.getElementById("consulta");
 
 
 
@@ -39,7 +40,7 @@ btn2.onclick = function() {
     btn.style.backgroundColor = "cornflowerblue";
     buscar.style.display = "none";
     btn2.style.backgroundColor = "lightskyblue";
-    registro.style.display = "inline-block";
+    registro.style.display = "flex";
     buscarA=false;
   }
 
@@ -51,18 +52,21 @@ visiBtn.onclick = function(){
   home.style.display = "none";
   control.style.display = "flex";
   //navB.style.display = "none";
+  navC.style.display = "block";
 }
 
 vConfBtn.onclick = function(){
     home.style.display = "block";
     control.style.display = "none";
     //navB.style.display = "block";
+    navC.style.display = "none";
   }
 
   retBtn.onclick = function(){
     home.style.display = "block";
     control.style.display = "none";
     //navB.style.display = "block";
+    navC.style.display = "none";
   }
 
 

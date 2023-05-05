@@ -38,6 +38,7 @@
         <button class="navB" id="srch">Buscar</button>
         <button class="navB" id="rgst">Registro</button>
       </div>
+        <button class="navB" id="consulta">Consulta</button>
     </nav>
 
     <div class="container">
@@ -104,51 +105,48 @@
     
           <fieldset id="identificacion">
             <legend><h2>Identificacion</h2></legend>
-            <span>
-              Expediente:
-              <input type="text" name="expediente">
-            </span>
-            <span>
-              Nombre:
-              <input type="text" name="nombre">
-            </span>
-            <span>
-              Fecha de nacimiento:
-              <input type="date" name="fechaNac">
-              
-            </span>
-            <span>
-              Entidad de nacimiento:
-              <input type="text" name="entidad" maxlength="2">
-            </span>
-            <span>
-              CURP:
-              <input type="text" name="curp" maxlength="18">
-            </span>
-            <span>
-              Edad:
-              <input type="number" name="edad" min="1" max="200">
-            </span>
-            <span>
-              Sexo:
-              <select id="country" name="Sexo">
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-              </select>
-            </span>
+            <div>
+              <span>
+                Expediente:
+                <input type="text" name="expediente">
+              </span>
+              <span>
+                Fecha de nacimiento:
+                <input type="date" name="fechaNac">
+                
+              </span>
+              <span>
+                CURP:
+                <input type="text" name="curp" maxlength="18">
+              </span>
+
+              <span>
+                Sexo:
+                <select id="country" name="Sexo">
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>
+              </span>
+            </div>
     
-            <span>
-              Talla:
-              <input type="text" name="talla"><br><br>
-            </span>
-            <span>
-              Domicilio:
-              <input type="text" name="domicilio1">
-            </span>
-            <span>
-              Teléfono:
-              <input type="text" name="telefono" maxlength="15">
-            </span>
+            <div>
+              <span>
+                Talla:
+                <input type="text" name="talla">
+              </span>
+              <span>
+                Entidad de nacimiento:
+                <input type="text" name="entidad" maxlength="2">
+              </span>
+              <span>
+                Domicilio:
+                <input type="text" name="domicilio">
+              </span>
+              <span>
+                Teléfono:
+                <input type="text" name="telefono" maxlength="15">
+              </span>
+            </div>
           </fieldset>
     
           <fieldset id="antecedentes">
@@ -244,11 +242,11 @@
               3. Obesidad:
               <input type="checkbox" name = "obesidad">
               4. Dislipidemias:
-              <input type="text" name="dislipidemiasD" maxlength="6">
+              <input type="checkbox" name = "dislipidemias">
               5. Síndrome metabólico:
-              <input type="text" name="sindromeMetabolico" maxlength="6">
+              <input type="checkbox" name = "metabolico">
               6. Sobrepeso:
-              <input type="text" name="sobrepesoD" maxlength="6">
+              <input type="checkbox" name = "sobrepeso"><br>
               Detección se le realizó por:
               <select name="deteccion">
                 <option value="pesquisa">Pesquisa</option>
