@@ -1,7 +1,7 @@
 import pymysql
 from app import app
 from config import mysql
-from flask import jsonify
+from flask import jsonify, render_template
 from flask import flash, request
 
 @app.route('/create', methods=['POST'])
@@ -126,6 +126,11 @@ def showMessage(error=None):
     respone = jsonify(message)
     respone.status_code = 404
     return respone
-        
+
+@app.route('/')
+def index():
+        return render_template('index.html')
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
+
