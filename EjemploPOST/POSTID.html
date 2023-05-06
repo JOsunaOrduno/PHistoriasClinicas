@@ -1,0 +1,52 @@
+<form action="/prueba" method="POST" class="registro" id="registro"><!--Esta es la parte mas importante
+action /nombre de su "funcion" method POST-->
+    <h1>Registro</h1>
+
+    <fieldset id="identificacion">
+      <legend><h2>Identificacion</h2></legend>
+      <div>
+        <span>
+          Expediente:
+          <input type="text" name="expediente">
+        </span>
+        <span>
+          Fecha de nacimiento:
+          <input type="date" name="fechaNac">
+          
+        </span>
+        <span>
+          CURP:
+          <input type="text" name="curp" maxlength="18">
+        </span>
+
+        <span>
+          Sexo:
+          <select id="country" name="sexo">
+            <option value= "1">Masculino</option>
+            <option value= "0">Femenino</option>
+          </select>
+        </span>
+      </div>
+
+      <div>
+        <span>
+          Talla:
+          <input type="text" name="talla">
+        </span>
+        <span>
+          Entidad de nacimiento:
+          <input type="text" name="entidad">
+        </span>
+        <span>
+          Domicilio:
+          <input type="text" name="domicilio">
+        </span>
+        <span>
+          Teléfono:
+          <input type="text" name="telefono" maxlength="15">
+        </span>
+      </div>
+      <button type="submit">Guardar </button>
+      <!--Al final un submit para decirle que terminamos de guardar los datos-->
+    </fieldset>
+  </form>

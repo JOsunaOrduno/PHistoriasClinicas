@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">
 
-  <link rel="icon" href="Imgs/buap.png">
+  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
 
 
 </head>
@@ -101,7 +101,8 @@
 		<p></p>
           <button id="visita" class="confirm">Visita</button>
         </div>
-        <form class="registro" id="registro">
+
+        <form action="/prueba" method="POST" class="registro" id="registro">
           <h1>Registro</h1>
     
           <fieldset id="identificacion">
@@ -123,9 +124,9 @@
 
               <span>
                 Sexo:
-                <select id="country" name="Sexo">
-                  <option value="Masculino">Masculino</option>
-                  <option value="Femenino">Femenino</option>
+                <select id="country" name="sexo">
+                  <option value= "1">Masculino</option>
+                  <option value= "0">Femenino</option>
                 </select>
               </span>
             </div>
@@ -137,7 +138,7 @@
               </span>
               <span>
                 Entidad de nacimiento:
-                <input type="text" name="entidad" maxlength="2">
+                <input type="text" name="entidad">
               </span>
               <span>
                 Domicilio:
@@ -148,7 +149,9 @@
                 <input type="text" name="telefono" maxlength="15">
               </span>
             </div>
+            <button type="submit">Guardar </button>
           </fieldset>
+        </form>
     
           <fieldset id="antecedentes">
             <legend><h2>Antecedentes</h2></legend>
@@ -270,7 +273,7 @@
             <button id="confirm" type="button" class="confirm">Confirmar</button>
           </div>
           
-        </form>
+        <!--</form>***************************************************************************-->
       </div>
 
       <form class="control" id="control">
