@@ -1,11 +1,34 @@
 import pymysql
 from app import app
 from config import mysql
-from flask import jsonify, render_template
+from flask import jsonify, render_template, redirect, url_for
 from flask import flash, request
 
+
+@app.route('/login', methods=['POST'])
+def login():
+        _usuario = request.form['usuario']
+        _password = request.form['password']
+
+        conn = mysql.connect()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
+            
+        cursor.execute("SELECT * FROM usuario WHERE usuario = %s AND password = %s", (_usuario, _password))
+        user = cursor.fetchone()
+        cursor.close()    
+        conn.connect()
+
+        if user is not None:
+            return redirect(url_for('tasks'))
+        else:
+            return render_template('index.html', message="Las credenciales no son correctas")
+
+@app.route('/tasks', methods=['GET'])
+def tasks():
+    return render_template('tasks.html')
+
 @app.route('/create', methods=['POST'])
-def create_paciente():
+def create_postman():
     try:        
         _json = request.json
         _entidadNac = _json['entidadNac']
@@ -18,9 +41,37 @@ def create_paciente():
         _fechaNac = _json['fechaNac']
         if request.method == 'POST':
             conn = mysql.connect()
-            cursor = conn.cursor(pymysql.cursors.DictCursor)		
+            cursor = conn.cursor(pymysql.cursors.DictCursor)	
+            	
             sqlQuery = "INSERT INTO paciente(entNacimiento, curp, sexo, talla, domicilio, telefono, spss, fechaNac) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)"
             bindData = (_entidadNac, _curp, _sexo, _talla, _domicilio, _telefono, _spss, _fechaNac)            
+            cursor.execute(sqlQuery, bindData)
+            #cursor.execute("INSERT INTO paciente(entNacimiento, curp, sexo, talla, domicilio, telefono, spss, fechaNac) VALUES(2, 2, 2, 2, 2, 2, 2, 2023-1-1)")
+            conn.commit()
+            respone = jsonify('Employee added successfully!')
+            respone.status_code = 200
+            return respone
+        else:
+            return showMessage()
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close() 
+        conn.close()  
+
+@app.route('/createUser', methods=['POST'])
+def create_user():
+    try:        
+        _json = request.json
+        _usuario = _json['usuario']
+        _password = _json['password']
+        
+
+        if request.method == 'POST':
+            conn = mysql.connect()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)		
+            sqlQuery = "INSERT INTO usuario(usuario, password) VALUES(%s, %s)"
+            bindData = (_usuario, _password)            
             cursor.execute(sqlQuery, bindData)
             #cursor.execute("INSERT INTO paciente(entNacimiento, curp, sexo, talla, domicilio, telefono, spss, fechaNac) VALUES(2, 2, 2, 2, 2, 2, 2, 2023-1-1)")
             conn.commit()
@@ -36,8 +87,8 @@ def create_paciente():
         conn.close()          
      
 
-@app.route('/prueba', methods=['POST'])
-def prueba_paciente():
+@app.route('/createP', methods=['POST'])
+def create_paciente():
     try:        
         _entidadNac = request.form['entidad']
         _curp = request.form['curp']

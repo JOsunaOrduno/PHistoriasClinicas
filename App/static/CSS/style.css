@@ -116,9 +116,6 @@ h1, .boton{
 }
 
 /*PANELES OCULTOS*/
-#paginaPrincipal{
-    display: none;
-}
 #antecedentes{
     display: none;
 }
