@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">                                         
   
-  <link rel="icon" href="Imgs/buap.png">
+  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
+  
 </head>
 
 <body>
@@ -22,6 +23,7 @@
             <button class="navB" id="srch">Buscar</button>
             <button class="navB" id="rgst">Registro</button>
           </div>
+          <button class="navB" id="consulta">Consulta</button>
         </nav>
 
         <div class="container">
