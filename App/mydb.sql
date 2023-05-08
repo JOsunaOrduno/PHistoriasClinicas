@@ -33,7 +33,7 @@ CREATE TABLE `antecedentesfamiliares` (
 CREATE TABLE `antecedentespersonales` (
   `idantecedentesPersonales` int(11) NOT NULL,
   `cardiovascular` varchar(45) DEFAULT NULL,
-  `hta` varchar(45) DEFAULT NULL,
+  `familiares[]` varchar(45) DEFAULT NULL,
   `tabaquismo` tinyint(4) DEFAULT NULL,
   `diabetes` tinyint(4) DEFAULT NULL,
   `alcoholismo` tinyint(4) DEFAULT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `diagnostico` (
   `idDiagnostico` int(11) NOT NULL,
   `ingreso` tinyint(4) DEFAULT NULL,
   `dm` int(11) DEFAULT NULL,
-  `hta` tinyint(4) DEFAULT NULL,
+  `familiares[]` tinyint(4) DEFAULT NULL,
   `obesidad` tinyint(4) DEFAULT NULL,
   `dis` tinyint(4) DEFAULT NULL,
   `sindromeMetabolico` tinyint(4) DEFAULT NULL,

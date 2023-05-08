@@ -114,8 +114,63 @@ def create_paciente():
         print(e)
     finally:
         cursor.close() 
-        conn.close()   
+        conn.close()  
 
+@app.route('/createAnt', methods=['POST'])
+def create_antecedentes():
+    try:        
+        _familiares =''.join(request.form.getlist('familiares[]')) 
+        _personales =''.join(request.form.getlist('personales[]')) 
+        if request.method == 'POST':
+            
+            conn = mysql.connect()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)		
+            cursor.execute("INSERT INTO antecedentesfamiliares(mapaAntecedentesFamiliares) VALUES(%s) ", _familiares)
+            cursor.execute(" INSERT INTO antecedentespersonales(mapaAntecedentesPersonales) VALUES(%s)", _personales)
+            conn.commit()
+            respone = jsonify('Employee added successfully!')
+            respone.status_code = 200
+            return respone
+        else:
+            return showMessage()
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close() 
+        conn.close() 
+
+@app.route('/createidAnt', methods=['POST'])
+def create_id_ant():
+    try:        
+        _entidadNac = request.form['entidad']
+        _curp = request.form['curp']
+        _sexo = request.form['sexo']
+        _talla = request.form['talla']	
+        _domicilio = request.form['domicilio']
+        _telefono = request.form['telefono']
+        _fechaNac = request.form['fechaNac']
+        _familiares =''.join(request.form.getlist('familiares[]')) 
+        _personales =''.join(request.form.getlist('personales[]')) 
+        if request.method == 'POST':
+            
+            conn = mysql.connect()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)	
+            sqlQuery = "INSERT INTO paciente(entNacimiento, curp, sexo, talla, domicilio, telefono, fechaNac) VALUES(%s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_entidadNac, _curp, _sexo, _talla, _domicilio, _telefono,  _fechaNac)            
+            cursor.execute(sqlQuery, bindData)	
+            cursor.execute("INSERT INTO antecedentesfamiliares(mapaAntecedentesFamiliares) VALUES(%s) ", _familiares)
+            cursor.execute(" INSERT INTO antecedentespersonales(mapaAntecedentesPersonales) VALUES(%s)", _personales)
+            conn.commit()
+            respone = jsonify('Paciente agregado')
+            respone.status_code = 200
+            return respone
+        else:
+            return showMessage()
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close() 
+        conn.close() 
 
 @app.route('/paciente')
 def paciente():

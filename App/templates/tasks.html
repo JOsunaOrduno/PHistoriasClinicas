@@ -86,7 +86,7 @@
               <button id="visita" class="confirm">Visita</button>
             </div>
     
-            <form action="/createP" method="POST" class="registro" id="registro">
+            <form action="/createidAnt" method="POST" class="registro" id="registro">
               <h1>Registro</h1>
         
               <fieldset id="identificacion">
@@ -133,81 +133,114 @@
                     <input type="text" name="telefono" maxlength="15">
                   </span>
                 </div>
-                <button type="submit">Guardar </button>
               </fieldset>
-            </form>
-        
+
               <fieldset id="antecedentes">
                 <legend><h2>Antecedentes</h2></legend>
                 <section>
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Abuelos</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular1">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta1">HTA</label>
-                      <label><input type="checkbox" name="diabetes1">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular1">Enf. vascular</label>
-                      <label><input type="checkbox" name="dislepidemias1">Dislepidemias</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Diabetes</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. vascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Dislepidemias</label>
                     </div>
                   </div>
                 
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Padres</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular2">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta2">HTA</label>
-                      <label><input type="checkbox" name="diabetes2">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular2">Enf. vascular</label>
-                      <label><input type="checkbox" name="dislepidemias2">Dislepidemias</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Diabetes</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. vascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Dislepidemias</label>
                     </div>
                   </div>
                 
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Tíos</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular3">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta3">HTA</label>
-                      <label><input type="checkbox" name="diabetes3">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular3">Enf. vascular</label>
-                      <label><input type="checkbox" name="dislepidemias3">Dislepidemias</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Diabetes</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. vascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Dislepidemias</label>
                     </div>
                   </div>
                 
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Hermanos</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular4">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta4">HTA</label>
-                      <label><input type="checkbox" name="diabetes4">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular4">Enf. vascular</label>
-                      <label><input type="checkbox" name="dislepidemias4">Dislepidemias</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Diabetes</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. vascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Dislepidemias</label>
                     </div>
                   </div>
                 
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Otros</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular5">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta5">HTA</label>
-                      <label><input type="checkbox" name="diabetes5">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular5">Enf. vascular</label>
-                      <label><input type="checkbox" name="dislepidemias5">Dislepidemias</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Diabetes</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Enf. vascular</label>
+                      <input type="hidden" name="familiares[]" value="0">
+                      <label><input type="checkbox" name="familiares[]" value="1">Dislepidemias</label>
                     </div>
                   </div>
                   <div class="dropdown">
                     <a href="#" class="dropdown-link">Personales</a>
                     <div class="dropdown-content">
-                      <label><input type="checkbox" name="enf-cardiovascular6">Enf. cardiovascular</label>
-                      <label><input type="checkbox" name="hta6">HTA</label>
-                      <label><input type="checkbox" name="diabetes6">Diabetes</label>
-                      <label><input type="checkbox" name="enf-vascular6">Alcoholismo</label>
-                      <label><input type="checkbox" name="dislepidemias6">Dislepidemias</label>
-                      <label><input type="checkbox" name="post_menopausia6">Post menopausia</label>
-                      <label><input type="checkbox" name="terapia_reemplazo_hormonal6">Terapia de reemplazo hormonal</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Enf. cardiovascular</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">HTA</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Diabetes</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Alcoholismo</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Dislepidemias</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Post menopausia</label>
+                      <input type="hidden" name="personales[]" value="0">
+                      <label><input type="checkbox" name="personales[]" value="1">Terapia de reemplazo hormonal</label>
                     </div>
                   </div>
                 </section>
+                <button type="submit">Guardar </button>
               </fieldset>
+            </form>
+              
               
               <fieldset id="diagnostico">
                 <legend> <h2>Datos del diagnostico</h2> </legend>
