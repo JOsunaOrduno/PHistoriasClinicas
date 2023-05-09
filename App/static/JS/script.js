@@ -161,3 +161,14 @@ signInBtn.onclick = () => {
   loginP.style.display = "none";
   princP.style.display = "block";
 }
+
+
+
+// when page is ready
+$(document).ready(function() {
+      // on form submit
+    $("#registro").on('submit', function() {
+        // to each unchecked checkbox
+        $(this).find('input[type=checkbox]:not(:checked)').prop('checked', true).val(0);
+    })
+})
