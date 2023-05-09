@@ -10,11 +10,17 @@
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">                                         
   
-  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
-  
+  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">  
 </head>
 
 <body>
+      {% with messages = get_flashed_messages() %}  
+      {% if messages %}  
+            {% for message in messages %}  
+                <p>{{ message }}</p>  
+            {% endfor %}  
+        {% endif %}  
+      {% endwith %}  
       <div id="paginaPrincipal">
         <header> Historias clinicas </header>
 
@@ -86,7 +92,7 @@
               <button id="visita" class="confirm">Visita</button>
             </div>
     
-            <form action="/createidAnt" method="POST" class="registro" id="registro">
+            <form action="/regisrarP" method="POST" class="registro" id="registro">
               <h1>Registro</h1>
         
               <fieldset id="identificacion">
@@ -209,11 +215,7 @@
                     </div>
                   </div>
                 </section>
-                <button type="submit">Guardar </button>
               </fieldset>
-            </form>
-              
-            <form action="/createDiagno" method="POST" class="registro" id="registro"></form>
               <fieldset id="diagnostico">
                 <legend> <h2>Datos del diagnostico</h2> </legend>
                 <section>
@@ -256,13 +258,13 @@
                     <option value="no">No</option>
                   </select><br>
                 </section>
+                <div id="botonRegistrarPaciente"><button type="submit" class="confirm" id="registrarPaciente">Registrar paciente</button></div>
               </fieldset>
               <div class="boton">
                 <button id="cancel" type="button" class="confirm">Cancelar</button>
                 <button id="confirm" type="button" class="confirm">Confirmar</button>
               </div>
-              
-            <!--</form>***************************************************************************-->
+            </form>
           </div>
 
           <form class="control" id="control">

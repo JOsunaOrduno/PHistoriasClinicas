@@ -122,6 +122,7 @@ h1, .boton{
 }
 #diagnostico{
     display: none;    
+    flex-direction: column;
 }
 .container .registro {
     display: none;
@@ -252,3 +253,7 @@ input[type="checkbox"] {
 	margin-right: 5px;
 }
 /********************************/
+
+#botonRegistrarPaciente{
+    width: 100%;
+}

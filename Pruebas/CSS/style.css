@@ -124,6 +124,7 @@ h1, .boton{
 }
 #diagnostico{
     display: none;    
+    flex-direction: column;
 }
 .container .registro {
     display: none;
