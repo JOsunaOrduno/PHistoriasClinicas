@@ -115,6 +115,35 @@ def create_paciente():
     finally:
         cursor.close() 
         conn.close()  
+        
+@app.route('/createDiagno', methods=['POST'])
+def diagnostico_paciente():
+    try:
+        _ingreso = request.form['ingreso-reingreso']
+        _dm = request.form['tipo-dm']
+        _hta = request.form.get('hta')
+        _obesidad = request.form.get('obesidad')
+        _dis = request.form.get('dislipidemias')
+        _sindromeMetabolico = request.form.get('metabolico')
+        _sobrepeso = request.form.get('sobrepeso')
+        _deteccion = request.form['deteccion']
+        _tratamientoPrevio = request.form['tratamiento']
+        _covid = request.form['covid']
+        
+        conn = mysql.connect()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
+        sqlQuery = "INSERT INTO diagnostico(ingreso, dm, hta, obesidad, dis, sindromeMetabolico, sobrepeso, deteccion, tratamientoPrevio, covid) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        bindData = (_ingreso, _dm, _hta, _obesidad, _dis, _sindromeMetabolico, _sobrepeso, _deteccion, _tratamientoPrevio, _covid)
+        cursor.execute(sqlQuery, bindData)
+        conn.commit()
+        response = jsonify('Diagnóstico registrado con éxito')
+        response.status_code = 200
+        return response
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close() 
+        conn.close()
 
 @app.route('/createAnt', methods=['POST'])
 def create_antecedentes():
