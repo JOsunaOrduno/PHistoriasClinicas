@@ -62,7 +62,8 @@ def create_postman():
 
 @app.route('/regisrarP', methods=['POST'])
 def registrar_paciente():
-    try:        
+    try:      
+        _expediente = request.form['expediente']  
         _entidadNac = request.form['entidad']
         _curp = request.form['curp']
         _sexo = request.form['sexo']
@@ -87,17 +88,17 @@ def registrar_paciente():
         if request.method == 'POST':
             conn = mysql.connect()
             cursor = conn.cursor(pymysql.cursors.DictCursor)	
-            sqlQuery = "INSERT INTO paciente(entNacimiento, curp, sexo, talla, domicilio, telefono, fechaNac) VALUES(%s, %s, %s, %s, %s, %s, %s)"
-            bindData = (_entidadNac, _curp, _sexo, _talla, _domicilio, _telefono,  _fechaNac)            
-            cursor.execute(sqlQuery, bindData)	
-            cursor.execute("INSERT INTO antecedentesfamiliares(mapaAntecedentesFamiliares) VALUES(%s) ", _familiares)
-            cursor.execute(" INSERT INTO antecedentespersonales(mapaAntecedentesPersonales) VALUES(%s)", _personales)
-            sqlQuery = "INSERT INTO diagnostico(ingreso, dm, hta, obesidad, dis, sindromeMetabolico, sobrepeso, deteccion, tratamientoPrevio, covid) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            bindData = (_ingreso, _dm, _hta, _obesidad, _dis, _sindromeMetabolico, _sobrepeso, _deteccion, _tratamientoPrevio, _covid)
+            sqlQuery = "INSERT INTO paciente(expediente, entNacimiento, curp, sexo, talla, domicilio, telefono, fechaNac) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_expediente, _entidadNac, _curp, _sexo, _talla, _domicilio, _telefono,  _fechaNac)            
+            cursor.execute(sqlQuery, bindData)
+            cursor.execute("INSERT INTO antecedentesfamiliares(Paciente_expediente, mapaAntecedentesFamiliares) VALUES(%s, %s) ",(_expediente, _familiares)  )
+            cursor.execute(" INSERT INTO antecedentespersonales(Paciente_expediente, mapaAntecedentesPersonales) VALUES(%s, %s)", (_expediente, _personales) )
+            sqlQuery = "INSERT INTO diagnostico(Paciente_expediente, ingreso, dm, hta, obesidad, dis, sindromeMetabolico, sobrepeso, deteccion, tratamientoPrevio, covid) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_expediente, _ingreso, _dm, _hta, _obesidad, _dis, _sindromeMetabolico, _sobrepeso, _deteccion, _tratamientoPrevio, _covid)
             cursor.execute(sqlQuery, bindData)
             conn.commit()
             #flash('Paciente agregado exitosamente')
-            return redirect(url_for('tasks'))
+            return render_template('tasks.html', flash_message="True")
         else:
             return showMessage()
     except Exception as e:
@@ -193,7 +194,7 @@ def showMessage(error=None):
         'message': 'Record not found: ' + request.url,
     }
     respone = jsonify(message)
-    respone.status_code = 404
+    respone.status_code = 200
     return respone
 
 @app.route('/')

@@ -72,12 +72,41 @@ h1, .boton{
     border-radius: 15px;
     color: white;
     border: none;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    left: 0;
+    right: 0;
+    transition: ease 0.5s;
 }
 .confirm:hover{
     background-color: lightblue;
 }
 .confirm:active{
     background-color: lightskyblue;
+}
+
+
+#botonRegistrarPaciente{
+    width: 100%;
+}
+
+.siguiente{
+    transform: translateX(51%);
+    transition: ease 0.5s;
+}
+
+.anterior{
+    transform: translateX(-51%);
+    transition: ease 0.5s;
+}
+
+.confirmar{
+    background-color: #29eb15;
+    transition: ease 0.5s;
+    color: black;
+    width: 150px;
 }
 /*******************/
 
@@ -116,9 +145,7 @@ h1, .boton{
 }
 
 /*PANELES OCULTOS*/
-#paginaPrincipal{
-    display: none;
-}
+
 #antecedentes{
     display: none;
 }
@@ -255,3 +282,4 @@ input[type="checkbox"] {
 	margin-right: 5px;
 }
 /********************************/
+

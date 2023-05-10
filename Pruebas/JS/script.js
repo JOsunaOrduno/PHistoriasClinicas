@@ -120,22 +120,30 @@ function suma(){
 var antP = document.getElementById("antecedentes");
 var idP = document.getElementById("identificacion");
 var diagP = document.getElementById("diagnostico");
-var sigBtn  = document.getElementById("confirm");
-var canBtn  = document.getElementById("cancel");
+var sigBtn  = document.getElementById("siguiente");
+var canBtn  = document.getElementById("anterior");
 var antA = false;
 var diagA = false;
+let loginForm = document.getElementById("registro");
 
 sigBtn.onclick = function() {
     if(antA){
         antP.style.display = "none";
         diagP.style.display = "flex";
         antA=false;
-        diagA=true;        
+        diagA=true; 
+        sigBtn.classList.add("confirmar");     
+        sigBtn.innerHTML="Registrar Paciente";  
     }
     else if(!diagA){
         idP.style.display = "none";
         antP.style.display = "flex";
         antA=true;  
+        sigBtn.classList.add("siguiente");
+        canBtn.classList.add("anterior");
+    }
+    else{
+        loginForm.submit();
     }
 }
 
@@ -144,20 +152,25 @@ canBtn.onclick = function() {
         antP.style.display = "none";
         idP.style.display = "flex";
         antA=false;       
+        canBtn.classList.remove("anterior");
+        sigBtn.classList.remove("siguiente");
+         
     }
     else if(diagA){
         diagP.style.display = "none";
         antP.style.display = "flex";
         diagA = false;
         antA=true;
+        sigBtn.classList.remove("confirmar");  
+        sigBtn.innerHTML="Confirmar";
     }
 }
 
-var princP  = document.getElementById("paginaPrincipal");
-var loginP = document.getElementById("login");
-var signInBtn = document.getElementById("iniciaSesion");
 
-signInBtn.onclick = () => {
-  loginP.style.display = "none";
-  princP.style.display = "block";
-}
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Ensure you input a value in both fields!");
+  loginForm.submit();
+});
+
+

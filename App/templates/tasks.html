@@ -14,13 +14,7 @@
 </head>
 
 <body>
-      {% with messages = get_flashed_messages() %}  
-      {% if messages %}  
-            {% for message in messages %}  
-                <p>{{ message }}</p>  
-            {% endfor %}  
-        {% endif %}  
-      {% endwith %}  
+      {% if flash_message == "True" %} <script>alert(["Paciente agregado con exito!"]);</script> {% endif %}
       <div id="paginaPrincipal">
         <header> Historias clinicas </header>
 
@@ -258,11 +252,10 @@
                     <option value="no">No</option>
                   </select><br>
                 </section>
-                <div id="botonRegistrarPaciente"><button type="submit" class="confirm" id="registrarPaciente">Registrar paciente</button></div>
               </fieldset>
               <div class="boton">
-                <button id="cancel" type="button" class="confirm">Cancelar</button>
-                <button id="confirm" type="button" class="confirm">Confirmar</button>
+                <button id="anterior" type="button" class="confirm">Anterior</button>
+                <button id="siguiente" type="button" class="confirm">Siguiente</button>
               </div>
             </form>
           </div>
