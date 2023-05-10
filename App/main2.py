@@ -10,7 +10,7 @@ def create_visita():
         _json = request.json
         _fecha = _json['fecha']
         _peso = _json['peso']
-        _imc = _json['imc']
+        _talla = _json['talla']
         _trigliceridos = _json['trigliceridos']	
         _glucemia = _json['glucemia']
         _HbA1c = _json['HbA1c']
@@ -30,11 +30,11 @@ def create_visita():
         _observaciones = _json['observaciones']
         _Paciente_expediente = _json['Paciente_expediente']
         
-        if _fecha and _peso and _imc and _trigliceridos and _glucemia and _HbA1c and _revisionPies and _controlado and _ayudaMutua and _complicaciones and _referencia and _baja  and _hdl and _ldl and _cintura and _sistolica and _diastolica and _noFarmacologico and _farmacologico and _observaciones and _Paciente_expediente and request.method == 'POST':         
+        if _fecha and _peso and _talla and _trigliceridos and _glucemia and _HbA1c and _revisionPies and _controlado and _ayudaMutua and _complicaciones and _referencia and _baja  and _hdl and _ldl and _cintura and _sistolica and _diastolica and _noFarmacologico and _farmacologico and _observaciones and _Paciente_expediente and request.method == 'POST':         
             conn = mysql.connect()
             cursor = conn.cursor(pymysql.cursors.DictCursor)		
-            sqlQuery = "INSERT INTO visita(fecha, peso, imc, trigliceridos, glucemia, HbA1c, revisionPies, controlado, ayudaMutua, complicaciones, referencia, baja, hdl, ldl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            bindData = (_fecha, _peso, _imc, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _ayudaMutua, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
+            sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, ayudaMutua, complicaciones, referencia, baja, hdl, ldl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _ayudaMutua, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
             cursor.execute(sqlQuery, bindData)
             conn.commit()
             respone = jsonify('AGREGADO CORRECTAMENTE')
