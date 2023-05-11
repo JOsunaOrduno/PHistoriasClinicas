@@ -8,11 +8,12 @@ from flask import flash, request
 
 
 
-@app.route('/consultarPacienteIdentidad/<expediente>' )
-def mostrarIdentidad(expediente):
+@app.route('/consultarPacienteIdentidad', methods=['POST'] )
+def mostrarIdentidad():
+    _Paciente_expediente = request.form['expBus']
     conn = mysql.connect()
     cursor = conn.cursor(pymysql.cursors.DictCursor)
-    cursor.execute("SELECT * FROM paciente WHERE expediente =%s", expediente)                                                                                                                                     
+    cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
     data = cursor.fetchone()                                                                                     
     return render_template('tasks2.html', d = data)
 

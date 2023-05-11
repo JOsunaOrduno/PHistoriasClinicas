@@ -41,8 +41,8 @@
         <div class="container">
           <div class="home" id="home">
             <div class="buscar" id="buscar">
-              <form id="busqueda" onsubmit="get_action(this)">
-                <input type="text" id="expBus">
+              <form id="busqueda" action="consultarPacienteIdentidad" method="post">
+                <input type="text" id="expBus" name="expBus">
                 <button type="submit">Buscar</button> 
               </form>
               <table> 
