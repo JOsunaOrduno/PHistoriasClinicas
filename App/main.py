@@ -5,6 +5,17 @@ from flask import jsonify, render_template, redirect, url_for
 from flask import flash, request
 
 
+
+
+@app.route('/consultarPacienteIdentidad')
+def mostrarIdentidad():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    #cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
+    cursor.execute('SELECT * FROM paciente')                                                                                                                                     
+    data = cursor.fetchall()                                                                                 
+    return render_template('tasks2.html', contacts = data)    
+
 @app.route('/login', methods=['POST'])
 def login():
         _usuario = request.form['usuario']
@@ -23,9 +34,14 @@ def login():
         else:
             return render_template('index.html', message="Las credenciales no son correctas")
 
-@app.route('/tasks', methods=['GET'])
+@app.route('/tasks')
 def tasks():
-    return render_template('tasks.html')
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    #cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
+    cursor.execute('SELECT * FROM paciente')                                                                                                                                     
+    data = cursor.fetchall()    
+    return render_template('tasks.html', contacts = data)
 
 @app.route('/create', methods=['POST'])
 def create_postman():
@@ -92,7 +108,7 @@ def create_visita():
             bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
             cursor.execute(sqlQuery, bindData)
             conn.commit()
-            return render_template('tasks.html', flash_message="True")
+            return redirect(url_for('tasks'))
         else:
             return showMessage()
     except Exception as e:
@@ -140,7 +156,7 @@ def registrar_paciente():
             cursor.execute(sqlQuery, bindData)
             conn.commit()
             #flash('Paciente agregado exitosamente')
-            return render_template('tasks.html', flash_message="True")
+            return redirect(url_for('tasks'))
         else:
             return showMessage()
     except Exception as e:
@@ -239,8 +255,12 @@ def showMessage(error=None):
     respone.status_code = 200
     return respone
 
+@app.errorhandler(TypeError)
+def dbError(error=None):
+    return redirect(url_for('tasks'))
+
 @app.route('/')
-def index():
+def index():                                                                  
         return render_template('index.html')
 
 if __name__ == "__main__":

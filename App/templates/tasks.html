@@ -29,18 +29,55 @@
         <div class="container">
           <div class="home" id="home">
             <div class="buscar" id="buscar">
-              <table>
+              <form action="/consultarPacienteIdentidad"  method = "GET">
+                <input type="text" name="expediente" id="">
+                <button type="submit">Buscar</button> 
+              </form>
+              <table> 
+                <thead>
+                  <tr>
+                    <td>Expediente</td>
+                    <td>entNacimiento</td>                                                                                                                   
+                    <td>Curp</td>
+                    <td>Sexo</td>
+                    <td>Talla</td>
+                    <td>Domicilio</td>
+                    <td>Teléfono</td>
+                    <td>fecha nacimiento</td>                                              
+                  </tr>
+                </thead>
+                  {% for d in contacts %}
+                  <tbody>
+                    <tr>
+                      <td>{{d.0}}</td>
+                      <td>{{d.1}}</td>
+                      <td>{{d.2}}</td>
+                      <td>{{d.3}}</td>
+                      <td>{{d.4}}</td>
+                      <td>{{d.5}}</td>
+                      <td>{{d.6}}</td>
+                      <td>{{d.7}}</td>
+                      <td> <button on click> Consultar </button></td>
+                      <td><button on click> Modificar </button></td>
+                      <td><button on click> Eliminar </button></td> 
+                      <td><button on click> Visita </button></td>  
+                    </tr>
+                  </tbody>
+                    
+                  {% endfor %}  
+            </table>  
+              <!-- <table></table>
                <h1>Buscar<br></h1>
                 <tr> Buscar por:
                   <select name="buscar">
                     <option value="espacio">⠀⠀⠀⠀⠀⠀⠀</option>
                     <option value="nombre">Nombre</option>
                     <option value=" CURP">CURP</option>
-    
-    
                 </select> 
-             
-                    (Nombre/CURP):
+                
+              
+                
+                (Nombre/CURP):
                 <input type="text" id="input-search" placeholder="Filtrar por Nombre/CURP" style="width: 200px;"><br><br>           
                    <p></p>
                   <th>Pacientes</th>      
@@ -81,8 +118,8 @@
                   <td><button on click> Visita </button></td>            
                 </tr>
     
-              </table>
-        <p></p>
+             
+              </table> -->
               <button id="visita" class="confirm">Visita</button>
             </div>
     
