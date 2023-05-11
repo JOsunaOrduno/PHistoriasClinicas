@@ -260,7 +260,7 @@
             </form>
           </div>
 
-          <form class="control" id="control">
+          <form action="/visita" method="POST" class="control" id="control">
             <h1>Control</h1>
             <fieldset >
               <h3>Fecha</h3>
@@ -273,18 +273,22 @@
                   <label for="peso">kg</label>
                 </span>
                 <span>
-                  <label for="estatura">Talla
+                  <label for="talla">Talla
                   </label> 
-                  <input type="number" id="estatura" name="estatura" size="5" oninput="suma()">  
-                  <label for="estatura">mts</label> 
+                  <input type="number" id="estatura" name="talla" size="5" oninput="suma()">  
+                  <label for="talla">cm</label> 
                 </span>
                 <span>
                   <label for="imc">IMC:</label> 
                   <input type="number" id="imc" name="imc" readonly> 
                 </span>
+                <span>
+                  <label for="cintura">Cintura:</label> 
+                  <input type="number" id="cintura" name="cintura"> 
+                </span>
 
                 Trigliceridos:
-                <input type="text" name="hdl">
+                <input type="text" name="trigliceridos">
               </div>
                 
               <span>   
@@ -297,7 +301,8 @@
                 
               </span>
               <label for="pies">Revision pies</label> 
-                <input type="checkbox" name="pies">   
+                <input type="hidden" name="pies" value="0">
+                <input type="checkbox" name="pies" value="1">   
               <span>
                 <label for="control">Paciente: </label> 
                 <select id="control" name="control">
@@ -306,11 +311,9 @@
                 </select> 
                 <br>
 
-                <label for="gam">Grupo Ayuda Mutua</label>    
-                <input type="checkbox" name="gam">
-
                 <label for="complicaciones">Complicaciones</label>    
-                <input type="checkbox" name="complicaciones">
+                <input type="hidden" name="complicaciones" value="0">
+                <input type="checkbox" name="complicaciones" value="1">
                 <br>
 
                 Referencia:
@@ -341,9 +344,9 @@
               <div id="tensionArt">
                 <h3>Tension Arterial</h3>
                     Sistólica:
-                <input type="text" name="tension">
+                <input type="text" name="sistolica">
                   Diastólica:
-                <input type="text" name="tension">
+                <input type="text" name="diastolica">
               </div>
 
               <div>
@@ -358,10 +361,11 @@
             <fieldset>
               <h3>Observaciones</h3>
               <textarea name="notas" id="" cols="40" rows="13"></textarea>
+              <input type="text" name="Paciente_expediente">   
             </fieldset>
             <div class="boton">
               <button class="confirm" type="button"  id="return">Cancelar</button>
-              <button class="confirm" type="button" id="visiConfirm">Confirmar</button>
+              <button class="confirm" type="submit" id="visiConfirm">Confirmar</button>
             </div>
             
           </form>  

@@ -60,6 +60,48 @@ def create_postman():
         conn.close()  
 
 
+@app.route('/visita', methods=['POST'])
+def create_visita():
+    try:        
+        _fecha = request.form['fecha']
+        _peso = request.form['peso']
+        _talla = request.form['talla']
+        _cintura = request.form['cintura']
+        _trigliceridos = request.form['trigliceridos']	
+        _glucemia = request.form['glucemia']
+        _HbA1c = request.form['tension']
+        _revisionPies =  request.form['pies'] 
+        _controlado = request.form['control']
+        _complicaciones = request.form['complicaciones']
+
+        _referencia = request.form['referencia']
+        _baja = request.form['baja']  
+        _hdl = request.form['hdl'] 
+        _ldl = request.form['ldl']
+        _sistolica = request.form['sistolica']
+        _diastolica = request.form['diastolica']
+        _noFarmacologico = request.form['nofarmacologico']
+        _farmacologico = request.form['farmacologico']
+        _observaciones = request.form['notas']
+        _Paciente_expediente = request.form['Paciente_expediente']
+        
+        if request.method == 'POST':         
+            conn = mysql.connect()
+            cursor = conn.cursor(pymysql.cursors.DictCursor)		
+            sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, hdl, ldl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
+            cursor.execute(sqlQuery, bindData)
+            conn.commit()
+            return render_template('tasks.html', flash_message="True")
+        else:
+            return showMessage()
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close() 
+        conn.close()    
+
+
 @app.route('/regisrarP', methods=['POST'])
 def registrar_paciente():
     try:      
