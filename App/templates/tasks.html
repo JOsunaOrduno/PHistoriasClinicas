@@ -14,7 +14,19 @@
 </head>
 
 <body>
-      {% if flash_message == "True" %} <script>alert(["Paciente agregado con exito!"]);</script> {% endif %}
+      {% with messages = get_flashed_messages()%}
+      {% if messages %}
+      {%for message in messages%}
+        {% if message == "Visita"%}
+          <script>alert(["Visita agregada exitosamente!"]);</script>
+        {% endif %}
+        {% if message == "Registro"%}
+          <script>alert(["Paciente agregado exitosamente!"]);</script>
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
       <div id="paginaPrincipal">
         <header> Historias clinicas </header>
 
@@ -29,8 +41,8 @@
         <div class="container">
           <div class="home" id="home">
             <div class="buscar" id="buscar">
-              <form action="/consultarPacienteIdentidad"  method = "GET">
-                <input type="text" name="expediente" id="">
+              <form id="busqueda" onsubmit="get_action(this)">
+                <input type="text" id="expBus">
                 <button type="submit">Buscar</button> 
               </form>
               <table> 
@@ -47,23 +59,22 @@
                   </tr>
                 </thead>
                   {% for d in contacts %}
-                  <tbody>
-                    <tr>
-                      <td>{{d.0}}</td>
-                      <td>{{d.1}}</td>
-                      <td>{{d.2}}</td>
-                      <td>{{d.3}}</td>
-                      <td>{{d.4}}</td>
-                      <td>{{d.5}}</td>
-                      <td>{{d.6}}</td>
-                      <td>{{d.7}}</td>
-                      <td> <button on click> Consultar </button></td>
-                      <td><button on click> Modificar </button></td>
-                      <td><button on click> Eliminar </button></td> 
-                      <td><button on click> Visita </button></td>  
-                    </tr>
-                  </tbody>
-                    
+                    <tbody>
+                      <tr>
+                        <td>{{d.0}}</td>
+                        <td>{{d.1}}</td>
+                        <td>{{d.2}}</td>
+                        <td>{{d.3}}</td>
+                        <td>{{d.4}}</td>
+                        <td>{{d.5}}</td>
+                        <td>{{d.6}}</td>
+                        <td>{{d.7}}</td>
+                        <td> <button on click> Consultar </button></td>
+                        <td><button on click> Modificar </button></td>
+                        <td><button on click> Eliminar </button></td> 
+                        <td><button on click> Visita </button></td>  
+                      </tr>
+                    </tbody>
                   {% endfor %}  
             </table>  
               <!-- <table></table>

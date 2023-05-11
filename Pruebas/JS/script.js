@@ -174,3 +174,20 @@ loginForm.addEventListener("submit", (e) => {
 });
 
 
+/*let buscarForm = document.getElementById("busqueda");
+buscarForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const exp = document.getElementById("expBus");
+  buscarForm.action = "http://127.0.0.1:5000/consultarPacienteIdentidad/"+ exp.textContent;
+  buscarForm.submit();
+  /*const xhr = new XMLHttpRequest();
+  const exp = document.getElementById("expBus");
+  xhr.open("GET", "http://127.0.0.1:5000/consultarPacienteIdentidad/"); //+ exp.textContent);
+  xhr.send()
+});*/
+
+
+
+function get_action() {
+  return "http://127.0.0.1:5000/consultarPacienteIdentidad/"+ exp.textContent;;
+}

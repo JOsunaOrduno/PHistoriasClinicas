@@ -7,14 +7,16 @@ from flask import flash, request
 
 
 
-@app.route('/consultarPacienteIdentidad')
-def mostrarIdentidad():
+
+@app.route('/consultarPacienteIdentidad/<expediente>' )
+def mostrarIdentidad(expediente):
     conn = mysql.connect()
-    cursor = conn.cursor()
-    #cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
-    cursor.execute('SELECT * FROM paciente')                                                                                                                                     
-    data = cursor.fetchall()                                                                                 
-    return render_template('tasks2.html', contacts = data)    
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("SELECT * FROM paciente WHERE expediente =%s", expediente)                                                                                                                                     
+    data = cursor.fetchone()                                                                                     
+    return render_template('tasks2.html', d = data)
+
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -108,6 +110,7 @@ def create_visita():
             bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
             cursor.execute(sqlQuery, bindData)
             conn.commit()
+            flash('Visita')
             return redirect(url_for('tasks'))
         else:
             return showMessage()
@@ -155,7 +158,7 @@ def registrar_paciente():
             bindData = (_expediente, _ingreso, _dm, _hta, _obesidad, _dis, _sindromeMetabolico, _sobrepeso, _deteccion, _tratamientoPrevio, _covid)
             cursor.execute(sqlQuery, bindData)
             conn.commit()
-            #flash('Paciente agregado exitosamente')
+            flash('Registro')
             return redirect(url_for('tasks'))
         else:
             return showMessage()
