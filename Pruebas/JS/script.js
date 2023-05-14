@@ -95,6 +95,12 @@ window.onclick = function (event) {
   }
 }
 
+//Fecha actual en control 
+window.addEventListener('load', function () {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementsByName('fecha')[0].value = today;
+});
+
 
 function suma() {
   const peso = parseFloat(document.getElementById("peso").value);
