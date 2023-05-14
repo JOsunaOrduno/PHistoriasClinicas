@@ -242,11 +242,11 @@ def update_emp():
 def delete_emp(expediente):
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM paciente WHERE expediente = %s",expediente)
+    cursor.execute('DELETE FROM paciente WHERE expediente = {0}', . format(expediente))
     conn.commit()
-    respone = jsonify('Employee deleted successfully!')
-    respone.status_code = 200
-    return respone
+ #   respone = jsonify('Employee deleted successfully!')
+ #   respone.status_code = 200
+    return redirect(url_for('tasks'))
         
        
 @app.errorhandler(404)
