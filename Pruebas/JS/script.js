@@ -98,8 +98,8 @@ window.onclick = function (event) {
 
 function suma() {
   const peso = parseFloat(document.getElementById("peso").value);
-  const estatura = parseFloat(document.getElementById("estatura").value);
-  const imc = peso / Math.pow(estatura / 100, 2);
+  const talla = parseFloat(document.getElementById("talla").value);
+  const imc = peso / Math.pow(talla / 100, 2);
   document.getElementById("imc").value = imc.toFixed(2);
 }
 
