@@ -108,12 +108,10 @@ function calcular(){
 
 
 function suma(){
-  try{           
-          var p = parseFloat(document.getElementById("peso").value) ;
-          var e = parseFloat(document.getElementById("estatura").value) ;
-        
-          document.getElementById("imc").value = p/(e*e); 
-        } catch(e){}
+  const peso = parseFloat(document.getElementById("peso").value);
+  const estatura = parseFloat(document.getElementById("estatura").value);
+  const imc = peso / Math.pow(estatura / 100, 2);
+  document.getElementById("imc").value = imc.toFixed(2);
 }
 
 
