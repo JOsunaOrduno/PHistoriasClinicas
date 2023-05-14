@@ -70,67 +70,14 @@
                 <td>{{d.6}}</td>
                 <td>{{d.7}}</td>
                 <td> <button on click> Consultar </button></td>
-                <td><button on click> Modificar </button></td>
-                <td><button on click> Eliminar </button></td>
+                <td> <a href ="/edit/{{paciente.0}}> Modificar </a></td>
+                <td> <a href ="/delete/{{paciente.0}}> Eliminar </a> </td>
                 <td><button on click> Visita </button></td>
               </tr>
             </tbody>
             {% endfor %}
           </table>
-          <!-- <table></table>
-               <h1>Buscar<br></h1>
-                <tr> Buscar por:
-                  <select name="buscar">
-                    <option value="espacio">⠀⠀⠀⠀⠀⠀⠀</option>
-                    <option value="nombre">Nombre</option>
-                    <option value=" CURP">CURP</option>
-                </select> 
-                
-              
-                
-                (Nombre/CURP):
-                <input type="text" id="input-search" placeholder="Filtrar por Nombre/CURP" style="width: 200px;"><br><br>           
-                   <p></p>
-                  <th>Pacientes</th>      
-                </tr>
-                <tr>
-                  <td><input type="text" id="paciente1" placeholder="Paciente 1" style="width: 200px;">  </td>
-                  <td> <button on click> Consultar </button></td>
-                  <td><button on click> Modificar </button></td>
-                  <td><button on click> Eliminar </button></td> 
-                  <td><button on click> Visita </button></td>            
-                </tr>
-                <tr>
-                  <td><input type="text" id="paciente2" placeholder="Paciente 2" style="width: 200px;">  </td>
-                  <td> <button on click> Consultar </button></td>
-                  <td><button on click> Modificar </button></td>
-                  <td><button on click> Eliminar </button></td>
-                  <td><button on click> Visita </button></td>
-                </tr>
-                <tr>
-                  <td><input type="text" id="paciente3" placeholder="Paciente 3" style="width: 200px;">  </td>
-                  <td> <button on click> Consultar </button></td>
-                  <td><button on click> Modificar </button></td>
-                  <td><button on click> Eliminar </button></td> 
-                  <td><button on click> Visita </button></td>            
-                </tr>
-                <tr>
-                  <td><input type="text" id="paciente4" placeholder="Paciente 4" style="width: 200px;">  </td>
-                  <td> <button on click> Consultar </button></td>
-                  <td><button on click> Modificar </button></td>
-                  <td><button on click> Eliminar </button></td> 
-                  <td><button on click> Visita </button></td>            
-                </tr>
-                <tr>
-                  <td><input type="text" id="paciente5" placeholder="Paciente 5" style="width: 200px;">  </td>
-                  <td> <button on click> Consultar </button></td>
-                  <td><button on click> Modificar </button></td>
-                  <td><button on click> Eliminar </button></td> 
-                  <td><button on click> Visita </button></td>            
-                </tr>
-    
-             
-              </table> -->
+         
           <button id="visita" class="confirm">Visita</button>
         </div>
 
@@ -144,21 +91,21 @@
             <div>
               <span>
                 Expediente:
-                <input type="text" name="expediente">
+                <input type="text" name="expediente" value="{{paciente.1}}">
               </span>
               <span>
                 Fecha de nacimiento:
-                <input type="date" name="fechaNac">
+                <input type="date" name="fechaNac" value="{{paciente.8}}>
 
               </span>
               <span>
                 CURP:
-                <input type="text" name="curp" maxlength="18">
+                <input type="text" name="curp" maxlength="18" value="{{paciente.3}}>
               </span>
 
               <span>
                 Sexo:
-                <select id="country" name="sexo">
+                <select id="country" name="sexo" value="{{paciente.4}}>
                   <option value="1">Masculino</option>
                   <option value="0">Femenino</option>
                 </select>
@@ -168,19 +115,19 @@
             <div>
               <span>
                 Talla:
-                <input type="number" min="0">
+                <input type="number" min="0" value="{{paciente.5}}>
               </span>
               <span>
                 Entidad de nacimiento:
-                <input type="text" name="entidad">
+                <input type="text" name="entidad" value="{{paciente.2}}>
               </span>
               <span>
                 Domicilio:
-                <input type="text" name="domicilio">
+                <input type="text" name="domicilio" value="{{paciente.6}}>
               </span>
               <span>
                 Teléfono:
-                <input type="text" name="telefono" maxlength="15">
+                <input type="text" name="telefono" maxlength="15" value="{{paciente.7}}>
               </span>
             </div>
           </fieldset>
