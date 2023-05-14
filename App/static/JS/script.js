@@ -96,17 +96,6 @@ window.onclick = function (event) {
 }
 
 
-
-function calcular() {
-  try {
-    var a = parseFloat(document.getElementById("hdl").value);
-    var b = parseFloat(document.getElementById("ldl").value);
-
-    document.getElementById("total").value = a + b;
-  } catch (e) { }
-}
-
-
 function suma() {
   const peso = parseFloat(document.getElementById("peso").value);
   const estatura = parseFloat(document.getElementById("estatura").value);
