@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">                    
+  <title>Historias clinicas</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">                                         
+  
+  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
+  
+</head>
+
+<body>
+    <table> 
+      <thead>
+        <tr>
+          <td>Expediente</td>
+          <td>entNacimiento</td>                                                                                                                   
+          <td>Curp</td>
+          <td>Sexo</td>
+          <td>Talla</td>                 
+          <td>Domicilio</td>
+          <td>Teléfono</td>
+          <td>fecha nacimiento</td>                                              
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td>{{d.expediente}}</td>
+            <td>{{d.entNacimiento}}</td>
+            <td>{{d.curp}}</td>
+            <td>{{d.sexo}}</td>
+            <td>{{d.talla}}</td>
+            <td>{{d.domicilio}}</td>
+            <td>{{d.telefono}}</td>
+            <td>{{d.fechaNac}}</td>
+          </tr>
+        </tbody>
+
+    </table> 
+
+<form action="/tasks"><button type="submit">REGRESAR</button></form>
+</body>
+</html>
