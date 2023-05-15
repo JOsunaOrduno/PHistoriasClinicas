@@ -70,8 +70,8 @@
                 <td>{{d.6}}</td>
                 <td>{{d.7}}</td>
                 <td> <button on click> Consultar </button></td>
-                <td> <a href ="/edit/{{paciente.0}}> Modificar </a></td>
-                <td> <a href ="/delete/{{paciente.0}}> Eliminar </a> </td>
+                <td> <a href ="/edit/"{{d.0}}> Modificar </a></td>
+                <td> <a href ="/delete/"{{d.0}}> Eliminar </a> </td>
                 <td><button on click> Visita </button></td>
               </tr>
             </tbody>
@@ -91,21 +91,21 @@
             <div>
               <span>
                 Expediente:
-                <input type="text" name="expediente" value="{{paciente.1}}">
+                <input type="text" name="expediente">
               </span>
               <span>
                 Fecha de nacimiento:
-                <input type="date" name="fechaNac" value="{{paciente.8}}>
+                <input type="date" name="fechaNac">
 
               </span>
               <span>
                 CURP:
-                <input type="text" name="curp" maxlength="18" value="{{paciente.3}}>
+                <input type="text" name="curp" maxlength="18">
               </span>
 
               <span>
                 Sexo:
-                <select id="country" name="sexo" value="{{paciente.4}}>
+                <select id="country" name="sexo">
                   <option value="1">Masculino</option>
                   <option value="0">Femenino</option>
                 </select>
@@ -115,19 +115,19 @@
             <div>
               <span>
                 Talla:
-                <input type="number" min="0" value="{{paciente.5}}>
+                <input type="number" min="0">
               </span>
               <span>
                 Entidad de nacimiento:
-                <input type="text" name="entidad" value="{{paciente.2}}>
+                <input type="text" name="entidad" >
               </span>
               <span>
                 Domicilio:
-                <input type="text" name="domicilio" value="{{paciente.6}}>
+                <input type="text" name="domicilio">
               </span>
               <span>
                 Teléfono:
-                <input type="text" name="telefono" maxlength="15" value="{{paciente.7}}>
+                <input type="text" name="telefono" maxlength="15">
               </span>
             </div>
           </fieldset>
