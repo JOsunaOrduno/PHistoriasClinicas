@@ -22,7 +22,7 @@
           <td>entNacimiento</td>                                                                                                                   
           <td>Curp</td>
           <td>Sexo</td>
-          <td>Talla</td>
+          <td>Talla</td>                 
           <td>Domicilio</td>
           <td>Teléfono</td>
           <td>fecha nacimiento</td>                                              
@@ -41,7 +41,101 @@
           </tr>
         </tbody>
 
-  </table>  
-  <form action="/tasks"><button type="submit">REGRESAR</button></form>
+    </table> 
+    <table> 
+      <thead>
+        <tr>
+          <td>idDiagnostico</td>
+          <td>Ingreso</td>
+          <td>Dm</td>
+          <td>Hta</td>
+          <td>Obecidad</td>
+          <td>Dis</td>
+          <td>SindromeMetabolico</td>
+          <td>Sobrepeso</td>
+          <td>Detecccion</td>
+          <td>tratamientoPrevio</td>
+          <td>Covid</td>
+          <td>PacienteExpediente</td>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td>{{d2.idDiagnostico}}</td>
+            <td>{{d2.ingreso}}</td>
+            <td>{{d2.dm}}</td>
+            <td>{{d2.hta}}</td>
+            <td>{{d2.obesidad}}</td>
+            <td>{{d2.dis}}</td>
+            <td>{{d2.sindromeMetabolico}}</td>
+            <td>{{d2.sobrepeso}}</td>
+            <td>{{d2.deteccion}}</td>
+            <td>{{d2.tratamientoPrevio}}</td>
+            <td>{{d2.covid}}</td>
+            <td>{{d2.Paciente_expediente}}</td>
+          </tr>
+        </tbody>
+    </table> 
+    <table> 
+      <thead>
+        <tr>
+          <td>idcontrol</td>
+          <td>fecha</td>
+          <td>peso</td>
+          <td>talla</td>
+          <td>trigliceridos</td>
+          <td>glucemia</td>
+          <td>HbA1c</td>
+          <td>revisionPies</td>
+          <td>controlado</td>
+          <td>ayudaMutua</td>
+          <td>complicaciones</td>
+          <td>referencia</td>
+          <td>baja</td>
+          <td>total</td>
+          <td>ldl</td>
+          <td>hdl</td>
+          <td>cintura</td>
+          <td>sistolica</td>
+          <td>diastolica</td>
+          <td>noFarmacologico</td>
+          <td>farmacologico</td>
+          <td>observaciones</td>
+          <td>Paciente_expediente</td>
+        </tr>
+      </thead>
+       {% for v in d3 %}
+        <tbody>
+          <tr>
+          <td>{{v.idcontrol}}</td>
+          <td>{{v.fecha}}</td>
+          <td>{{v.peso}}</td>
+          <td>{{v.talla}}</td>
+          <td>{{v.trigliceridos}}</td>
+          <td>{{v.glucemia}}</td>
+          <td>{{v.HbA1c}}</td>
+          <td>{{v.revisionPies}}</td>
+          <td>{{v.controlado}}</td>
+          <td>{{v.ayudaMutua}}</td>
+          <td>{{v.complicaciones}}</td>
+          <td>{{v.referencia}}</td>
+          <td>{{v.baja}}</td>
+          <td>{{v.total}}</td>
+          <td>{{v.ldl}}</td>
+          <td>{{v.hdl}}</td>
+          <td>{{v.cintura}}</td>
+          <td>{{v.sistolica}}</td>
+          <td>{{v.diastolica}}</td>
+          <td>{{v.noFarmacologico}}</td>
+          <td>{{v.farmacologico}}</td>
+          <td>{{v.observaciones}}</td>
+          <td>{{v.Paciente_expediente}}</td>
+          <td>{{v.Paciente_expediente}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+    </table> 
+
+<form action="/tasks"><button type="submit">REGRESAR</button></form>
 </body>
 </html>
