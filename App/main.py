@@ -80,8 +80,7 @@ def create_postman():
 
 
 @app.route('/visita', methods=['POST'])
-def create_visita():
-    try:        
+def create_visita():       
         _fecha = request.form['fecha']
         _peso = request.form['peso']
         _talla = request.form['talla']
@@ -95,7 +94,7 @@ def create_visita():
 
         _referencia = request.form['referencia']
         _baja = request.form['baja']
-        _total = request.form['total']  
+        #_total = request.form['total']  
         _ldl = request.form['ldl']
         _hdl = request.form['hdl'] 
         _sistolica = request.form['sistolica']
@@ -104,28 +103,19 @@ def create_visita():
         _farmacologico = request.form['farmacologico']
         _observaciones = request.form['notas']
         _Paciente_expediente = request.form['Paciente_expediente']
-        
-        if request.method == 'POST':         
-            conn = mysql.connect()
-            cursor = conn.cursor(pymysql.cursors.DictCursor)		
-            sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, total, ldl, hdl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _total, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
-            cursor.execute(sqlQuery, bindData)
-            conn.commit()
-            flash('Visita')
-            return redirect(url_for('tasks'))
-        else:
-            return showMessage()
-    except Exception as e:
-        print(e)
-    finally:
-        cursor.close() 
-        conn.close()    
+ 
+        conn = mysql.connect()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)		
+        sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, ldl, hdl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
+        cursor.execute(sqlQuery, bindData)
+        conn.commit()
+        flash('Visita')
+        return redirect(url_for('tasks'))
 
 
 @app.route('/regisrarP', methods=['POST'])
 def registrar_paciente():
-    try:      
         _expediente = request.form['expediente']  
         _entidadNac = request.form['entidad']
         _curp = request.form['curp']
@@ -148,6 +138,7 @@ def registrar_paciente():
         _deteccion = request.form['deteccion']
         _tratamientoPrevio = request.form['tratamiento']
         _covid = request.form['covid']
+        
         if request.method == 'POST':
             conn = mysql.connect()
             cursor = conn.cursor(pymysql.cursors.DictCursor)	
@@ -161,14 +152,7 @@ def registrar_paciente():
             cursor.execute(sqlQuery, bindData)
             conn.commit()
             flash('Registro')
-            return redirect(url_for('tasks'))
-        else:
-            return showMessage()
-    except Exception as e:
-        print(e)
-    finally:
-        cursor.close() 
-        conn.close()         
+            return redirect(url_for('tasks'))     
 
 @app.route('/paciente')
 def paciente():
@@ -239,7 +223,7 @@ def update_emp():
 
 
 
-@app.route('/delete/<expediente>', methods=['DELETE'])
+@app.route('/delete/<expediente>')
 def delete_emp(expediente):
     conn = mysql.connect()
     cursor = conn.cursor()

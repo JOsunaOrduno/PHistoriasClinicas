@@ -70,8 +70,8 @@
                 <td>{{d.6}}</td>
                 <td>{{d.7}}</td>
                 <td> <button on click> Consultar </button></td>
-                <td> <a href ="/edit/"{{d.0}}> Modificar </a></td>
-                <td> <a href ="/delete/"{{d.0}}> Eliminar </a> </td>
+                <td> <a href ="/edit/{{d.0}}" method="delete"> Modificar </a></td>
+                <td> <a href ="/delete/{{d.0}}"> Eliminar </a> </td>
                 <td><button on click> Visita </button></td>
               </tr>
             </tbody>
@@ -115,7 +115,7 @@
             <div>
               <span>
                 Talla:
-                <input type="number" min="0">
+                <input type="number"   name="talla" min="0">
               </span>
               <span>
                 Entidad de nacimiento:
@@ -266,7 +266,7 @@
         <fieldset>
           <h3>Fecha</h3>
 
-          <input type="date" name="fecha" min="1900-01-01">
+          <input type="date" name="fecha" >
           <div class="imc">
             <span>
               <label for="peso">Peso:</label>
@@ -284,20 +284,20 @@
             </span>
             <span>
               <label for="cintura">Cintura:</label>
-              <input type="number" id="cintura" name="cintura">
+              <input type="number" id="cintura" name="cintura" value="0">
             </span>
             <span>
               <label>Trigliceridos:</label>
-              <input type="number" id="trigliceridos" name="trigliceridos" size="5" oninput="suma()" min="0">
+              <input type="number" id="trigliceridos" name="trigliceridos" size="5" oninput="suma()" min="0" value="0">
               <label for="trigliceridos">mg/dl</label>
             </span>
           </div>
           <span>
             <label>Glucemia:</label>
-            <input type="number" id="glucemia" name="glucemia" size="5" oninput="suma()" min="0">
+            <input type="number" id="glucemia" name="glucemia" size="5" oninput="suma()" min="0" value="0">
             <label for="glucemia">mg/dl</label>
             <label for="tension">HbA1c:</label>
-            <input type="number" id="tension" name="tension" size="5" oninput="suma()" min="0">
+            <input type="number" id="tension" name="tension" size="5" oninput="suma()" min="0" value="0">
             <label for="tension">%</label>
           </span>
           <label for="pies">Revision pies</label>
@@ -317,9 +317,9 @@
             <br>
 
             Referencia:
-            <input type="text" name="referencia">
+            <input type="text" name="referencia" value="0">
             Baja:
-            <input type="text" name="baja">
+            <input type="text" name="baja" value="0">
           </span>
 
         </fieldset>
@@ -329,13 +329,13 @@
             <h3>Colesterol</h3>
             <span>
               <label>Total:</label>
-              <input type="number" id="total" name="total" size="5" min="0">
+              <input type="number" id="total" name="total" size="5" min="0" value="0">
               <label for="total">mg/dl</label>
               <label for="ldl">LDL:</label>
-              <input type="number" id="ldl" name="ldl" size="5" min="0">
+              <input type="number" id="ldl" name="ldl" size="5" min="0" value="0">
               <label for="ldl">mg/dl</label>
               <label for="hdl">HDL:</label>
-              <input type="number" id="hdl" name="hdl" size="5" min="0">
+              <input type="number" id="hdl" name="hdl" size="5" min="0" value="0">
               <label for="hdl">mg/dl</label>
             </span>
             <span>
@@ -345,26 +345,26 @@
             <h3>Tension Arterial</h3>
             <span>
               <label>Sistólica:</label>
-              <input type="number" id="sistolica" name="sistolica" size="5" min="0">
+              <input type="number" id="sistolica" name="sistolica" size="5" min="0" value="0">
               <label for="total">mmHG</label>
               <label for="ldl">Diastólica:</label>
-              <input type="number" id="diastolica" name="diastolica" size="5" min="0">
+              <input type="number" id="diastolica" name="diastolica" size="5" min="0" value="0">
               <label for="ldl">mmHG</label>
           </div>
 
           <div>
             <h3>Tratamiento preescrito</h3>
             No farmacologico:
-            <input type="text" name="farmacologico">
+            <input type="text" name="farmacologico" value="0">
             Farmacologico:
-            <input type="text" name="nofarmacologico">
+            <input type="text" name="nofarmacologico" value="0">
           </div>
 
         </fieldset>
         <fieldset>
           <h3>Observaciones</h3>
           <textarea name="notas" id="" cols="40" rows="13"></textarea>
-          <input type="text" name="Paciente_expediente">
+          <input type="text" name="Paciente_expediente" value="0">
         </fieldset>
         <div class="boton">
           <button class="confirm" type="button" id="return">Cancelar</button>
