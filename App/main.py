@@ -53,7 +53,7 @@ def tasks():
     return render_template('tasks.html', contacts = data)
 
 
-@app.route('/search')
+@app.route('/search' , methods=['POST'])
 def search():
     _Paciente_expediente= request.form['expBus']
     conn = mysql.connect()

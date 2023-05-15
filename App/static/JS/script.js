@@ -158,11 +158,11 @@ canBtn.onclick = function () {
   }
 }
 
-
+/*
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   alert("Ensure you input a value in both fields!");
   loginForm.submit();
-});
+});/*/
 
 
