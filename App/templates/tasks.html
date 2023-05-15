@@ -41,6 +41,7 @@
         <div class="container">
           <div class="home" id="home">
             <div class="buscar" id="buscar">
+              <h1>Busqueda</h1>
               <form id="busqueda" action="consultarPacienteIdentidad" method="post">
                 <input type="text" id="expBus" name="expBus">
                 <button type="submit">Buscar</button> 
@@ -311,99 +312,101 @@
           <form action="/visita" method="POST" class="control" id="control">
             <h1>Control</h1>
             <fieldset >
-              <h3>Fecha</h3>
+              <div class="division">
+                <h3>Fecha</h3>
               
-              <input type="date" name="fecha" value="2021-03-23" min="1900-01-01" max="2021-03-23"  >
-              <div class="imc">
-                <span>
-                  <label for="peso">Peso:</label>
-                  <input type="number" id="peso"  name="peso" size="5" oninput="suma()"> 
-                  <label for="peso">kg</label>
+                <input type="date" name="fecha" value="2021-03-23" min="1900-01-01" max="2021-03-23"  >
+                <div class="imc">
+                  <span>
+                    <label for="peso">Peso:</label>
+                    <input type="number" id="peso"  name="peso" size="5" oninput="suma()"> 
+                    <label for="peso">kg</label>
+                  </span>
+                  <span>
+                    <label for="talla">Talla
+                    </label> 
+                    <input type="number" id="estatura" name="talla" size="5" oninput="suma()">  
+                    <label for="talla">cm</label> 
+                  </span>
+                  <span>
+                    <label for="imc">IMC:</label> 
+                    <input type="number" id="imc" name="imc" readonly> 
+                  </span>
+                  <span>
+                    <label for="cintura">Cintura:</label> 
+                    <input type="number" id="cintura" name="cintura"> 
+                  </span>
+  
+                  Trigliceridos:
+                  <input type="text" name="trigliceridos">
+                </div>
+                  
+                <span>   
+                  <label for="glucemia">Glucemia:</label>
+                  <input type="text" name="glucemia">
+                  <label for="tension">HbA1c:</label> 
+                  <input type="number" name="tension">   
+                  <label for="tension">%</label>
+  
+                  
                 </span>
+                <label for="pies">Revision pies</label> 
+                  <input type="hidden" name="pies" value="0">
+                  <input type="checkbox" name="pies" value="1">   
                 <span>
-                  <label for="talla">Talla
-                  </label> 
-                  <input type="number" id="estatura" name="talla" size="5" oninput="suma()">  
-                  <label for="talla">cm</label> 
-                </span>
-                <span>
-                  <label for="imc">IMC:</label> 
-                  <input type="number" id="imc" name="imc" readonly> 
-                </span>
-                <span>
-                  <label for="cintura">Cintura:</label> 
-                  <input type="number" id="cintura" name="cintura"> 
-                </span>
-
-                Trigliceridos:
-                <input type="text" name="trigliceridos">
+                  <label for="control">Paciente: </label> 
+                  <select id="control" name="control">
+                    <option value="controlado">Controlado</option>
+                    <option value="nocontrolado">No controlado</option>
+                  </select> 
+                  <br>
+  
+                  <label for="complicaciones">Complicaciones</label>    
+                  <input type="hidden" name="complicaciones" value="0">
+                  <input type="checkbox" name="complicaciones" value="1">
+                  <br>
+  
+                  Referencia:
+                  <input type="text" name="referencia">  
+                  Baja:
+                  <input type="text" name="baja"> 
+                </span> 
+                 
               </div>
+              <div class="division">
+                <div id="colesterol">
+                  <h3>Colesterol</h3>
+                  <span>
+                    <label for="hdl">HDL:</label> 
+                    <input type="number" name="hdl" id="hdl" size="5" oninput="calcular()" >
+                  </span>
+                  <span>
+                    <label for="ldl">LDL:</label> 
+                    <input type="number" name="ldl" id="ldl"   size="5" oninput="calcular()">
+                  </span>
+                  <span>
+                    <label for="total">Total:</label> 
+                    <input type="number" name="total" id="total"  size="6" readonly>
+                  </span>
+                </div>    
                 
-              <span>   
-                <label for="glucemia">Glucemia:</label>
-                <input type="text" name="glucemia">
-                <label for="tension">HbA1c:</label> 
-                <input type="number" name="tension">   
-                <label for="tension">%</label>
-
-                
-              </span>
-              <label for="pies">Revision pies</label> 
-                <input type="hidden" name="pies" value="0">
-                <input type="checkbox" name="pies" value="1">   
-              <span>
-                <label for="control">Paciente: </label> 
-                <select id="control" name="control">
-                  <option value="controlado">Controlado</option>
-                  <option value="nocontrolado">No controlado</option>
-                </select> 
-                <br>
-
-                <label for="complicaciones">Complicaciones</label>    
-                <input type="hidden" name="complicaciones" value="0">
-                <input type="checkbox" name="complicaciones" value="1">
-                <br>
-
-                Referencia:
-                <input type="text" name="referencia">  
-                Baja:
-                <input type="text" name="baja"> 
-              </span> 
-              
-            </fieldset>
-
-            <fieldset >
-              <div id="colesterol">
-                <h3>Colesterol</h3>
-                <span>
-                  <label for="hdl">HDL:</label> 
-                  <input type="number" name="hdl" id="hdl" size="5" oninput="calcular()" >
-                </span>
-                <span>
-                  <label for="ldl">LDL:</label> 
-                  <input type="number" name="ldl" id="ldl"   size="5" oninput="calcular()">
-                </span>
-                <span>
-                  <label for="total">Total:</label> 
-                  <input type="number" name="total" id="total"  size="6" readonly>
-                </span>
-              </div>    
-              
-              <div id="tensionArt">
-                <h3>Tension Arterial</h3>
-                    Sistólica:
-                <input type="text" name="sistolica">
-                  Diastólica:
-                <input type="text" name="diastolica">
+                <div id="tensionArt">
+                  <h3>Tension Arterial</h3>
+                      Sistólica:
+                  <input type="text" name="sistolica">
+                    Diastólica:
+                  <input type="text" name="diastolica">
+                </div>
+  
+                <div>
+                  <h3>Tratamiento preescrito</h3>
+                  No farmacologico:
+                  <input type="text" name="farmacologico">
+                  Farmacologico:
+                  <input type="text" name="nofarmacologico">    
+                </div>
               </div>
-
-              <div>
-                <h3>Tratamiento preescrito</h3>
-                No farmacologico:
-                <input type="text" name="farmacologico">
-                Farmacologico:
-                <input type="text" name="nofarmacologico">    
-              </div>
+              
               
             </fieldset>
             <fieldset>
