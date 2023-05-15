@@ -39,10 +39,26 @@ def login():
 
 @app.route('/tasks')
 def tasks():
+    _Paciente_expediente= "88"
     conn = mysql.connect()
     cursor = conn.cursor()
     #cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
-    cursor.execute('SELECT * FROM paciente')                                                                                                                                     
+    cursor.execute('SELECT * FROM paciente')  
+    #cursor.execute("SELECT * FROM paciente WHERE expediente LIKE " + ("'"+ _Paciente_expediente + "%'")) 
+    #print("SELECT * FROM paciente WHERE expediente LIKE " + ("'"+ _Paciente_expediente + "%'"))                                                                                                                              
+    data = cursor.fetchall()    
+    return render_template('tasks.html', contacts = data)
+
+
+@app.route('/search')
+def search():
+    _Paciente_expediente= request.form['expBus']
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    #cursor.execute("SELECT * FROM paciente WHERE expediente =%s", _Paciente_expediente)                                                                                                                                     
+    #cursor.execute('SELECT * FROM paciente')  
+    cursor.execute("SELECT * FROM paciente WHERE expediente LIKE " + ("'"+ _Paciente_expediente + "%'")) 
+    #print("SELECT * FROM paciente WHERE expediente LIKE " + ("'"+ _Paciente_expediente + "%'"))                                                                                                                              
     data = cursor.fetchall()    
     return render_template('tasks.html', contacts = data)
 
