@@ -5,7 +5,6 @@ var registro = document.getElementById("registro");
 var buscarA = true;
 var control = document.getElementById("control");
 var home = document.getElementById("home");
-var visiBtn = document.getElementById("visita");
 var retBtn = document.getElementById("return");
 var vConfBtn = document.getElementById("visiConfirm");
 var regBtn = document.getElementById("registrar");
@@ -48,7 +47,8 @@ btn2.onclick = function () {
   //modal.style.display = "block";
 }
 
-visiBtn.onclick = function () {
+function visita(expediente) {
+  document.getElementById("vistaExp").value = expediente;
   home.style.display = "none";
   control.style.display = "flex";
   //navB.style.display = "none";

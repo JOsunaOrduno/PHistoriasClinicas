@@ -102,6 +102,15 @@ h1, .boton{
     transition: ease 0.5s;
 }
 
+
+#visiConfirm{
+    transform: translateX(51%);
+}
+
+#return{
+    transform: translateX(-51%);
+}
+
 .confirmar{
     background-color: #29eb15;
     transition: ease 0.5s;
