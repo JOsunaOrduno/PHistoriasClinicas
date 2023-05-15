@@ -94,9 +94,10 @@ def create_visita():
         _complicaciones = request.form['complicaciones']
 
         _referencia = request.form['referencia']
-        _baja = request.form['baja']  
-        _hdl = request.form['hdl'] 
+        _baja = request.form['baja']
+        _total = request.form['total']  
         _ldl = request.form['ldl']
+        _hdl = request.form['hdl'] 
         _sistolica = request.form['sistolica']
         _diastolica = request.form['diastolica']
         _noFarmacologico = request.form['nofarmacologico']
@@ -107,8 +108,8 @@ def create_visita():
         if request.method == 'POST':         
             conn = mysql.connect()
             cursor = conn.cursor(pymysql.cursors.DictCursor)		
-            sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, hdl, ldl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _hdl, _ldl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
+            sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, total, ldl, hdl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _total, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
             cursor.execute(sqlQuery, bindData)
             conn.commit()
             flash('Visita')
@@ -242,11 +243,11 @@ def update_emp():
 def delete_emp(expediente):
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM paciente WHERE expediente = %s",expediente)
+    cursor.execute('DELETE FROM paciente WHERE expediente = {0}', . format(expediente))
     conn.commit()
-    respone = jsonify('Employee deleted successfully!')
-    respone.status_code = 200
-    return respone
+ #   respone = jsonify('Employee deleted successfully!')
+ #   respone.status_code = 200
+    return redirect(url_for('tasks'))
         
        
 @app.errorhandler(404)
