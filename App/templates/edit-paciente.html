@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historias clinicas</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">
+
+  <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
+</head>
+
+<body>
+  <form action="/update/{{paciente.expediente}}" method="POST" >
+  <h1>Registro</h1>
+
+  <fieldset id="identificacion">
+    <legend>
+      <h2>Identificacion</h2>
+    </legend>
+    <div>
+      <span>
+        Expediente:
+        <input type="text" name="expediente" value = {{paciente.expediente}} disabled = disabled>
+      </span>
+      <span>
+        Fecha de nacimiento:
+        <input type="text" name="fechaNac" value = {{paciente.fechaNac}}>
+
+      </span>
+      <span>
+        CURP:
+        <input type="text" name="curp" maxlength="18" value = {{paciente.curp}}>
+      </span>
+
+      <span>
+        Sexo:
+        <input type="text" name="sexo" maxlength="18" value = {{paciente.sexo}}>
+      </span>
+    </div>
+
+    <div>
+      <span>
+        Talla:
+        <input type="number"   name="talla" min="0" value = {{paciente.talla}}>
+      </span>
+      <span>
+        Entidad de nacimiento:
+        <input type="text" name="entidad" value = {{paciente.entNacimiento}}>
+      </span>
+      <span>
+        Domicilio:
+        <input type="text" name="domicilio" value = {{paciente.domicilio}}>
+      </span>
+      <span>
+        Teléfono:
+        <input type="text" name="telefono" maxlength="15" value = {{paciente.telefono}}>
+      </span>
+    </div>
+  </fieldset>  
+
+
+  <fieldset>
+    <legend>
+      <h2>Antecedentes</h2>
+    </legend>    
+    <section>
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Abuelos</a>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="familiares[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+          <label><input type="checkbox" name="familiares[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="familiares[]" value="3">Enf. vascular</label>
+          <label><input type="checkbox" name="familiares[]" value="4">Dislepidemias</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Padres</a>
+        <div class="dropdown-content">
+          <input type="hidden" name="familiares[]" value=" ">
+          <label><input type="checkbox" name="familiares[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+          <label><input type="checkbox" name="familiares[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="familiares[]" value="3">Enf. vascular</label>
+          <label><input type="checkbox" name="familiares[]" value="4">Dislepidemias</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Tíos</a>
+        <div class="dropdown-content">
+          <input type="hidden" name="familiares[]" value=" ">
+          <label><input type="checkbox" name="familiares[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+          <label><input type="checkbox" name="familiares[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="familiares[]" value="3">Enf. vascular</label>
+          <label><input type="checkbox" name="familiares[]" value="4">Dislepidemias</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Hermanos</a>
+        <div class="dropdown-content">
+          <input type="hidden" name="familiares[]" value=" ">
+          <label><input type="checkbox" name="familiares[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+          <label><input type="checkbox" name="familiares[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="familiares[]" value="3">Enf. vascular</label>
+          <label><input type="checkbox" name="familiares[]" value="4">Dislepidemias</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Otros</a>
+        <div class="dropdown-content">
+          <input type="hidden" name="familiares[]" value=" ">
+          <label><input type="checkbox" name="familiares[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="familiares[]" value="1">HTA</label>
+          <label><input type="checkbox" name="familiares[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="familiares[]" value="3">Enf. vascular</label>
+          <label><input type="checkbox" name="familiares[]" value="4">Dislepidemias</label>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#" class="dropdown-link">Personales</a>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="personales[]" value="0">Enf. cardiovascular</label>
+          <label><input type="checkbox" name="personales[]" value="1">HTA</label>
+          <label><input type="checkbox" name="personales[]" value="2">Diabetes</label>
+          <label><input type="checkbox" name="personales[]" value="3">Alcoholismo</label>
+          <label><input type="checkbox" name="personales[]" value="4">Dislepidemias</label>
+          <label><input type="checkbox" name="personales[]" value="5">Post menopausia</label>
+          <label><input type="checkbox" name="personales[]" value="6">Terapia de reemplazo hormonal</label>
+        </div>
+      </div>
+    </section>
+   
+  </fieldset>
+  
+  <button type = "submit">
+    Save 
+  </button>
+</form> 
+</body> 
+</html>
