@@ -7,6 +7,44 @@ from flask import flash, request
 
 
 
+@app.route('/edit/<expediente>')
+def get_paciente(expediente):
+    conn = mysql.connect()
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("SELECT * FROM paciente WHERE expediente =%s", expediente)       
+    d = cursor.fetchone()   
+    return render_template('edit-paciente.html', paciente = d)
+
+
+@app.route('/update/<expediente>', methods=['POST'])                                                                             
+def update_paciente(expediente):
+    if request.method == 'POST':
+        _entidadNac = request.form['entidad']
+        _curp = request.form['curp']
+        _sexo = request.form['sexo']
+        _talla = request.form['talla']	
+        _domicilio = request.form['domicilio']
+        _telefono = request.form['telefono']
+        _fechaNac = request.form['fechaNac']
+        
+        conn = mysql.connect()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)	
+        
+        cursor.execute(""" 
+            UPDATE paciente
+            SET entNacimiento = %s,
+                curp = %s,
+                sexo = %s,
+                talla = %s,
+                domicilio = %s,
+                telefono = %s,
+                fechaNac = %s
+            where expediente = %s
+        """, (_entidadNac, _curp, _sexo, _talla, _domicilio, _telefono, _fechaNac, expediente))
+        conn.commit() 
+        flash('Registro')
+    return redirect(url_for('tasks')) 
+
 
 @app.route('/consulta/<_expediente>')
 def mostrarIdentidad(_expediente):
