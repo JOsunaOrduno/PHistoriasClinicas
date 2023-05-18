@@ -90,16 +90,15 @@
             <div>
               <span>
                 Expediente:
-                <input type="text" name="expediente">
+                <input type="text" name="expediente" onclick="this.value=''">
               </span>
               <span>
                 Fecha de nacimiento:
-                <input type="date" name="fechaNac">
-
+                <input type="date" name="fechaNac" onclick="this.value=''">
               </span>
               <span>
                 CURP:
-                <input type="text" name="curp" maxlength="18">
+                <input type="text" name="curp" maxlength="18" onclick="this.value=''">
               </span>
 
               <span>
@@ -114,19 +113,19 @@
             <div>
               <span>
                 Talla:
-                <input type="number"   name="talla" min="0">
+                <input type="number" min="0" value="144" onclick="this.value=''">
               </span>
               <span>
                 Entidad de nacimiento:
-                <input type="text" name="entidad" >
+                <input type="text" name="entidad" onclick="this.value=''">
               </span>
               <span>
                 Domicilio:
-                <input type="text" name="domicilio">
+                <input type="text" name="domicilio" onclick="this.value=''">
               </span>
               <span>
                 Teléfono:
-                <input type="text" name="telefono" maxlength="15">
+                <input type="text" name="telefono" maxlength="15" onclick="this.value=''">
               </span>
             </div>
           </fieldset>
