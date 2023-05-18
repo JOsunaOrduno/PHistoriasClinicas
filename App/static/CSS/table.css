@@ -1,0 +1,61 @@
+table{
+    width: 50%;
+}
+.srchButtons{
+    color: black;
+}
+
+.srchContainers{
+    background-color: lightskyblue;
+}
+
+.expedientes{
+    width: 100px;
+}
+
+
+
+/* CSS */
+.button-43 {
+    background-image: linear-gradient(-180deg, #30b4ee 0%, #004fb0 100%);
+    /* border-radius: 0.5rem; */
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 16px;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    /* width: 80%; */
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    justify-content: center;
+    height: 25px;
+    align-items: center;
+}
+
+.button-43:hover {
+  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+
+@media (min-width: 768px) {
+  .button-43 {
+    padding: 1rem 2rem;
+  }
+}
+
+#dynTable{
+    overflow: auto;
+    max-height: 407px;
+    width: 50%;
+}
+#contenedorTabla{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+table{
+    width: 100%;
+}

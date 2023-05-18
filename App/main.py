@@ -167,7 +167,7 @@ def create_visita():
         bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
         cursor.execute(sqlQuery, bindData)
         conn.commit()
-        flash('Visita')
+        flash('Visita registrada!')
         return redirect(url_for('tasks'))
 
 
@@ -208,7 +208,7 @@ def registrar_paciente():
             bindData = (_expediente, _ingreso, _dm, _hta, _obesidad, _dis, _sindromeMetabolico, _sobrepeso, _deteccion, _tratamientoPrevio, _covid)
             cursor.execute(sqlQuery, bindData)
             conn.commit()
-            flash('Registro')
+            flash('Paciente registrado!')
             return redirect(url_for('tasks'))     
 
 @app.route('/paciente')
