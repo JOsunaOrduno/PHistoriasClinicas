@@ -184,3 +184,22 @@ buscarForm.addEventListener("submit", (e) => {
 /*function get_action() {
   return "http://127.0.0.1:5000/consultarPacienteIdentidad/"+ exp.textContent;;
 }*/
+
+
+//Validar formulario Control
+document.getElementById("visiConfirm").addEventListener("click", function(event){
+  event.preventDefault()
+  let fecha = document.querySelector('input[name="fecha"]').value;
+  let peso = document.querySelector('input[name="peso"]').value;
+  let talla = document.querySelector('input[name="talla"]').value;
+  let sistolica = document.querySelector('input[name="sistolica"]').value;
+  let diastolica = document.querySelector('input[name="diastolica"]').value;
+  let farmacologico = document.querySelector('input[name="farmacologico"]').value;
+  let nofarmacologico = document.querySelector('input[name="nofarmacologico"]').value;
+  
+  if (fecha === "" || peso === "" || talla === "" || sistolica === "" || diastolica === "" || farmacologico === "" || nofarmacologico === "") {
+      alert("Por favor complete todos los campos requeridos.");
+  } else {
+      document.getElementById("control").submit();
+  }
+});
