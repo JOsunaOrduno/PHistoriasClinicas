@@ -8,130 +8,153 @@
   <title>Historias clinicas</title>
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='CSS/modal.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">                                         
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styleLogin.css')}}">    
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/table.css')}}">                                     
   
   <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
   
 </head>
 
 <body>
-    <table> 
-      <thead>
-        <tr>
-          <td>Expediente</td>
-          <td>entNacimiento</td>                                                                                                                   
-          <td>Curp</td>
-          <td>Sexo</td>
-          <td>Talla</td>                 
-          <td>Domicilio</td>
-          <td>Teléfono</td>
-          <td>fecha nacimiento</td>                                              
-        </tr>
-      </thead>
-        <tbody>
-          <tr>
-            <td>{{d.expediente}}</td>
-            <td>{{d.entNacimiento}}</td>
-            <td>{{d.curp}}</td>
-            <td>{{d.sexo}}</td>
-            <td>{{d.talla}}</td>
-            <td>{{d.domicilio}}</td>
-            <td>{{d.telefono}}</td>
-            <td>{{d.fechaNac}}</td>
-          </tr>
-        </tbody>
+  <header> Historias clinicas </header>
 
-    </table> 
-    <table> 
-      <thead>
-        <tr>
-          <td>idDiagnostico</td>
-          <td>Ingreso</td>
-          <td>Dm</td>
-          <td>Hta</td>
-          <td>Obecidad</td>
-          <td>Dis</td>
-          <td>SindromeMetabolico</td>
-          <td>Sobrepeso</td>
-          <td>Detecccion</td>
-          <td>tratamientoPrevio</td>
-          <td>Covid</td>
-          <td>PacienteExpediente</td>
-        </tr>
-      </thead>
-        <tbody>
+    <nav>
+      <div id="navD">
+        <button class="navB" id="srch">Buscar</button>
+        <button class="navB" id="rgst">Registro</button>
+      </div>
+      <button class="navB" id="consulta">Consulta</button>
+    </nav>
+  <h1>Consulta del paciente con expediente #{{d.expediente}}</h1>
+  <div id="contenedorTabla">
+    <div id="tablaConsulta">
+      <table> 
+        <thead>
           <tr>
-            <td>{{d2.idDiagnostico}}</td>
-            <td>{{d2.ingreso}}</td>
-            <td>{{d2.dm}}</td>
-            <td>{{d2.hta}}</td>
-            <td>{{d2.obesidad}}</td>
-            <td>{{d2.dis}}</td>
-            <td>{{d2.sindromeMetabolico}}</td>
-            <td>{{d2.sobrepeso}}</td>
-            <td>{{d2.deteccion}}</td>
-            <td>{{d2.tratamientoPrevio}}</td>
-            <td>{{d2.covid}}</td>
+            <!--<td>Expediente</td>-->
+            <td>Entidad de nacimiento</td>                                                                                                                   
+            <td>Curp</td>
+            <td>Sexo</td>
+            <td>Talla</td>                 
+            <td>Domicilio</td>
+            <td>Teléfono</td>
+            <td>Fecha de nacimiento</td>                                              
           </tr>
-        </tbody>
-    </table> 
-    <table> 
-      <thead>
-        <tr>
-          <td>idcontrol</td>
-          <td>fecha</td>
-          <td>peso</td>
-          <td>talla</td>
-          <td>trigliceridos</td>
-          <td>glucemia</td>
-          <td>HbA1c</td>
-          <td>revisionPies</td>
-          <td>controlado</td>
-          <td>ayudaMutua</td>
-          <td>complicaciones</td>
-          <td>referencia</td>
-          <td>baja</td>
-          <td>total</td>
-          <td>ldl</td>
-          <td>hdl</td>
-          <td>cintura</td>
-          <td>sistolica</td>
-          <td>diastolica</td>
-          <td>noFarmacologico</td>
-          <td>farmacologico</td>
-          <td>observaciones</td>
-        </tr>
-      </thead>
-       {% for v in d3 %}
-        <tbody>
+        </thead>
+          <tbody>
+            <tr>
+              <!--<td>{{d.expediente}}</td>-->
+              <td>{{d.entNacimiento}}</td>
+              <td>{{d.curp}}</td>
+              <td>{{d.sexo}}</td>
+              <td>{{d.talla}}</td>
+              <td>{{d.domicilio}}</td>
+              <td>{{d.telefono}}</td>
+              <td>{{d.fechaNac}}</td>
+            </tr>
+          </tbody>
+  
+      </table> 
+      <table> 
+        <thead>
           <tr>
-          <td>{{v.idcontrol}}</td>
-          <td>{{v.fecha}}</td>
-          <td>{{v.peso}}</td>
-          <td>{{v.talla}}</td>
-          <td>{{v.trigliceridos}}</td>
-          <td>{{v.glucemia}}</td>
-          <td>{{v.HbA1c}}</td>
-          <td>{{v.revisionPies}}</td>
-          <td>{{v.controlado}}</td>
-          <td>{{v.ayudaMutua}}</td>
-          <td>{{v.complicaciones}}</td>
-          <td>{{v.referencia}}</td>
-          <td>{{v.baja}}</td>
-          <td>{{v.total}}</td>
-          <td>{{v.ldl}}</td>
-          <td>{{v.hdl}}</td>
-          <td>{{v.cintura}}</td>
-          <td>{{v.sistolica}}</td>
-          <td>{{v.diastolica}}</td>
-          <td>{{v.noFarmacologico}}</td>
-          <td>{{v.farmacologico}}</td>
-          <td>{{v.observaciones}}</td>
+            <!--<td>idDiagnostico</td>-->
+            <td>Ingreso</td>
+            <td>Dm</td>
+            <td>Hta</td>
+            <td>Obecidad</td>
+            <td>Dis</td>
+            <td>SindromeMetabolico</td>
+            <td>Sobrepeso</td>
+            <td>Detecccion</td>
+            <td>tratamientoPrevio</td>
+            <td>Covid</td>
           </tr>
-        </tbody>
-        {% endfor %}
-    </table> 
+        </thead>
+          <tbody>
+            <tr>
+              <!--<td>{{d2.idDiagnostico}}</td>-->
+              <td>{{d2.ingreso}}</td>
+              <td>{{d2.dm}}</td>
+              <td>{{d2.hta}}</td>
+              <td>{{d2.obesidad}}</td>
+              <td>{{d2.dis}}</td>
+              <td>{{d2.sindromeMetabolico}}</td>
+              <td>{{d2.sobrepeso}}</td>
+              <td>{{d2.deteccion}}</td>
+              <td>{{d2.tratamientoPrevio}}</td>
+              <td>{{d2.covid}}</td>
+            </tr>
+          </tbody>
+      </table> 
+      {% if d3 %}
+      <div  id="dynTableConsulta">
+        <table> 
+        <thead>
+          <tr>
+            <!--<td>idcontrol</td>-->
+            <td>fecha</td>
+            <td>peso</td>
+            <td>talla</td>
+            <td>trigliceridos</td>
+            <td>glucemia</td>
+            <td>HbA1c</td>
+            <td>revisionPies</td>
+            <td>controlado</td>
+            <td>complicaciones</td>
+            <td>referencia</td>
+            <td>baja</td>
+            <td>total</td>
+            <td>ldl</td>
+            <td>hdl</td>
+            <td>cintura</td>
+            <td>sistolica</td>
+            <td>diastolica</td>
+            <td>noFarmacologico</td>
+            <td>farmacologico</td>
+            <td>observaciones</td>
+          </tr>
+        </thead>
+         {% for v in d3 %}
+          <tbody>
+            <tr>
+            <!--<td>{{v.idcontrol}}</td>-->
+            <td>{{v.fecha}}</td>
+            <td>{{v.peso}}</td>
+            <td>{{v.talla}}</td>
+            <td>{{v.trigliceridos}}</td>
+            <td>{{v.glucemia}}</td>
+            <td>{{v.HbA1c}}</td>
+            <td>{{v.revisionPies}}</td>
+            <td>{{v.controlado}}</td>
+            <td>{{v.complicaciones}}</td>
+            <td>{{v.referencia}}</td>
+            <td>{{v.baja}}</td>
+            <td>{{v.total}}</td>
+            <td>{{v.ldl}}</td>
+            <td>{{v.hdl}}</td>
+            <td>{{v.cintura}}</td>
+            <td>{{v.sistolica}}</td>
+            <td>{{v.diastolica}}</td>
+            <td>{{v.noFarmacologico}}</td>
+            <td>{{v.farmacologico}}</td>
+            <td>{{v.observaciones}}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+      </table> 
+      </div>
+      {% else %}
+        <h1>No se tienen visitas registradas</h1>
+      {% endif %}
+      
+    </div>
+  </div>
+    
 
-<form action="/tasks"><button type="submit">REGRESAR</button></form>
+<form action="/tasks"><button type="submit" class="confirm" id="consultaBtn">REGRESAR</button></form>
+<footer>
+  Equipo 1 Desarrollo web
+</footer>
 </body>
 </html>

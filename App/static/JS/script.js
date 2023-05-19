@@ -179,10 +179,9 @@ document.getElementById('visiConfirm').addEventListener('click', function (event
 
   if (!fecha || !peso || !talla || !control || !referencia || !baja || !farmacologico || !nofarmacologico) {
     alert('Por favor complete todos los campos obligatorios antes de continuar.');
-    return false;
   }
-
-  document.getElementById('control').submit();
+  else
+    document.getElementById('control').submit();
 });
 
 //Validar formulario Registro
@@ -197,10 +196,9 @@ document.getElementById('siguiente').addEventListener('click', function (event) 
 
   if (!expediente || !fechaNac || !curp || !entidad || !domicilio || !telefono) {
     alert('Por favor complete todos los campos obligatorios antes de continuar.');
-    return false;
   }
-
-  document.getElementById('registro').submit();
+  else
+    document.getElementById('registro').submit();
 });
 
 /*Validar formulario Registro (se añade Datos del diagnostico)
@@ -227,3 +225,5 @@ document.getElementById('siguiente').addEventListener('click', function(event) {
   document.getElementById('registro').submit();
 });
 */
+
+

@@ -10,7 +10,11 @@ table{
 }
 
 .expedientes{
-    width: 100px;
+    width: 120px;
+    background: cornflowerblue;
+    color: white;
+    font-weight: 500;
+    font-size: large;
 }
 
 
@@ -50,12 +54,46 @@ table{
     overflow: auto;
     max-height: 407px;
     width: 50%;
+    border-radius: 5px;
 }
+
+#dynTableConsulta{
+    overflow: auto;
+    max-height: 407px;
+    width: 100%;
+    border-radius: 5px;
+}
+
 #contenedorTabla{
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 table{
     width: 100%;
+    border-spacing: 0.95px;
+    border-radius: 50px;
+}
+thead{
+    background: cadetblue;
+    color: white;
+    font-weight: 500;
+}
+tbody td{
+    border: solid 1px black;
+    background: whitesmoke;
+}
+
+#consultaBtn{
+    width: 150px;
+}
+
+.editPaciente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
 }
