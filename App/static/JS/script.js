@@ -5,6 +5,7 @@ var registro = document.getElementById("registro");
 var buscarA = true;
 var control = document.getElementById("control");
 var home = document.getElementById("home");
+var visiBtn = document.getElementById("visita");
 var retBtn = document.getElementById("return");
 var vConfBtn = document.getElementById("visiConfirm");
 var regBtn = document.getElementById("registrar");
@@ -47,8 +48,7 @@ btn2.onclick = function () {
   //modal.style.display = "block";
 }
 
-function visita(expediente) {
-  document.getElementById("vistaExp").value = expediente;
+visiBtn.onclick = function () {
   home.style.display = "none";
   control.style.display = "flex";
   //navB.style.display = "none";
@@ -100,6 +100,7 @@ window.addEventListener('load', function () {
   var today = new Date().toISOString().split('T')[0];
   document.getElementsByName('fecha')[0].value = today;
 });
+
 
 function suma() {
   const peso = parseFloat(document.getElementById("peso").value);
@@ -176,6 +177,46 @@ canBtn.onclick = function () {
   }
 }
 
+//Validacion de Registro
+document.getElementById("siguiente").addEventListener("click", function(event){
+  // Detener la propagación del evento
+  event.stopPropagation();
+
+  // Obtener los valores de los campos obligatorios
+  var fechaNac = document.querySelector("input[name='fechaNac']").value;
+  var sexo = document.querySelector("select[name='Sexo']").value;
+  var entidad = document.querySelector("input[name='entidad']").value;
+  var domicilio = document.querySelector("input[name='domicilio']").value;
+  var telefono = document.querySelector("input[name='telefono']").value;
+
+  // Verificar si los campos obligatorios están completos
+  if(fechaNac === "" || sexo === "" || entidad === "" || domicilio === "" || telefono === "") {
+    // Si alguno de los campos obligatorios está vacío, mostrar un mensaje de error y evitar que se envíe el formulario
+    alert("Por favor complete todos los campos obligatorios.");
+    event.preventDefault();
+  } else {
+    // Si todos los campos obligatorios están completos, enviar el formulario y cambiar la pantalla que se muestra al usuario
+    if (antA) {
+      antP.style.display = "none";
+      diagP.style.display = "flex";
+      antA = false;
+      diagA = true;
+      sigBtn.classList.add("confirmar");
+      sigBtn.innerHTML = "Registrar Paciente";
+    }
+    else if (!diagA) {
+      idP.style.display = "none";
+      antP.style.display = "flex";
+      antA = true;
+      sigBtn.classList.add("siguiente");
+      canBtn.classList.add("anterior");
+    }
+    else {
+      loginForm.submit();
+    }
+  }
+});
+
 /*
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -216,7 +257,7 @@ document.getElementById('visiConfirm').addEventListener('click', function (event
 });*/
 
 
-/*Validar formulario Registro (se añade Datos del diagnostico)
+/*Validar formulario Registro (se añade Datos del diagnostico)*/
 document.getElementById('siguiente').addEventListener('click', function(event) {
   event.preventDefault();
   var expediente = document.querySelector('input[name="expediente"]').value;
@@ -239,6 +280,3 @@ document.getElementById('siguiente').addEventListener('click', function(event) {
 
   document.getElementById('registro').submit();
 });
-*/
-
-

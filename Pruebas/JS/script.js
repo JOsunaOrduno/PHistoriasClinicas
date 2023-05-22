@@ -119,27 +119,6 @@ var antA = false;
 var diagA = false;
 let loginForm = document.getElementById("registro");
 
-sigBtn.onclick = function () {
-  if (antA) {
-    antP.style.display = "none";
-    diagP.style.display = "flex";
-    antA = false;
-    diagA = true;
-    sigBtn.classList.add("confirmar");
-    sigBtn.innerHTML = "Registrar Paciente";
-  }
-  else if (!diagA) {
-    idP.style.display = "none";
-    antP.style.display = "flex";
-    antA = true;
-    sigBtn.classList.add("siguiente");
-    canBtn.classList.add("anterior");
-  }
-  else {
-    loginForm.submit();
-  }
-}
-
 canBtn.onclick = function () {
   if (antA) {
     antP.style.display = "none";
@@ -159,12 +138,74 @@ canBtn.onclick = function () {
   }
 }
 
+//Validacion de Registro
+document.getElementById("siguiente").addEventListener("click", function(event){
+  // Detener la propagación del evento
+  event.stopPropagation();
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Ensure you input a value in both fields!");
-  loginForm.submit();
+  // Obtener los valores de los campos obligatorios
+  var fechaNac = document.querySelector("input[name='fechaNac']").value;
+  var sexo = document.querySelector("select[name='Sexo']").value;
+  var entidad = document.querySelector("input[name='entidad']").value;
+  var domicilio = document.querySelector("input[name='domicilio']").value;
+  var telefono = document.querySelector("input[name='telefono']").value;
+
+  // Verificar si los campos obligatorios están completos
+  if(fechaNac === "" || sexo === "" || entidad === "" || domicilio === "" || telefono === "") {
+    // Si alguno de los campos obligatorios está vacío, mostrar un mensaje de error y evitar que se envíe el formulario
+    alert("Por favor complete todos los campos obligatorios.");
+    event.preventDefault();
+  } else {
+    // Si todos los campos obligatorios están completos, enviar el formulario y cambiar la pantalla que se muestra al usuario
+    if (antA) {
+      antP.style.display = "none";
+      diagP.style.display = "flex";
+      antA = false;
+      diagA = true;
+      sigBtn.classList.add("confirmar");
+      sigBtn.innerHTML = "Registrar Paciente";
+    }
+    else if (!diagA) {
+      idP.style.display = "none";
+      antP.style.display = "flex";
+      antA = true;
+      sigBtn.classList.add("siguiente");
+      canBtn.classList.add("anterior");
+    }
+    else {
+      loginForm.submit();
+    }
+  }
 });
+
+//Validacion de Control
+document.getElementById("visiConfirm").addEventListener("click", function(event){
+  // Obtener los valores de los campos obligatorios
+  var fecha = document.querySelector("input[name='fecha']").value;
+  var peso = document.querySelector("input[name='peso']").value;
+  var talla = document.querySelector("input[name='talla']").value;
+  var imc = document.querySelector("input[name='imc']").value;
+  var sistolica = document.querySelector("input[name='sistolica']").value;
+  var diastolica = document.querySelector("input[name='diastolica']").value;
+  var farmacologico = document.querySelector("input[name='farmacologico']").value;
+  var nofarmacologico = document.querySelector("input[name='nofarmacologico']").value;
+
+  // Verificar si alguno de los campos obligatorios está vacío
+  if (!fecha || !peso || !talla || !imc || !sistolica || !diastolica || !farmacologico || !nofarmacologico) {
+      // Evitar que se envíe el formulario
+      event.preventDefault();
+      // Mostrar un mensaje de error al usuario
+      alert("Por favor complete todos los campos obligatorios.");
+  } else {
+    // Si todos los campos obligatorios están completos, enviar el formulario y cambiar la pantalla que se muestra al usuario
+    // Aquí puedes agregar el código para cambiar la pantalla que se muestra al usuario después de completar la validación
+    // Por ejemplo:
+    home.style.display = "block";
+    control.style.display = "none";
+    navC.style.display = "none";
+  }
+});
+
 
 
 /*let buscarForm = document.getElementById("busqueda");
@@ -184,69 +225,3 @@ buscarForm.addEventListener("submit", (e) => {
 /*function get_action() {
   return "http://127.0.0.1:5000/consultarPacienteIdentidad/"+ exp.textContent;;
 }*/
-
-
-//Validar formulario Control
-document.getElementById('visiConfirm').addEventListener('click', function (event) {
-  event.preventDefault();
-  var fecha = document.querySelector('input[name="fecha"]').value;
-  var peso = document.querySelector('input[name="peso"]').value;
-  var talla = document.querySelector('input[name="talla"]').value;
-  var control = document.querySelector('select[name="control"]').value;
-  var referencia = document.querySelector('input[name="referencia"]').value;
-  var baja = document.querySelector('input[name="baja"]').value;
-  var farmacologico = document.querySelector('input[name="farmacologico"]').value;
-  var nofarmacologico = document.querySelector('input[name="nofarmacologico"]').value;
-
-  if (!fecha || !peso || !talla || !control || !referencia || !baja || !farmacologico || !nofarmacologico) {
-    alert('Por favor complete todos los campos obligatorios antes de continuar.');
-    return false;
-  }
-
-  document.getElementById('control').submit();
-});
-
-
-//Validar formulario Registro
-document.getElementById('siguiente').addEventListener('click', function (event) {
-  event.preventDefault();
-  var expediente = document.querySelector('input[name="expediente"]').value;
-  var fechaNac = document.querySelector('input[name="fechaNac"]').value;
-  var curp = document.querySelector('input[name="curp"]').value;
-  var entidad = document.querySelector('input[name="entidad"]').value;
-  var domicilio = document.querySelector('input[name="domicilio"]').value;
-  var telefono = document.querySelector('input[name="telefono"]').value;
-
-  if (!expediente || !fechaNac || !curp || !entidad || !domicilio || !telefono) {
-    alert('Por favor complete todos los campos obligatorios antes de continuar.');
-    return false;
-  }
-
-  document.getElementById('registro').submit();
-});
-
-/*Validar formulario Registro (se añade Datos del diagnostico)
-document.getElementById('siguiente').addEventListener('click', function(event) {
-  event.preventDefault();
-  var expediente = document.querySelector('input[name="expediente"]').value;
-  var fechaNac = document.querySelector('input[name="fechaNac"]').value;
-  var curp = document.querySelector('input[name="curp"]').value;
-  var entidad = document.querySelector('input[name="entidad"]').value;
-  var domicilio = document.querySelector('input[name="domicilio"]').value;
-  var telefono = document.querySelector('input[name="telefono"]').value;
-
-  var ingreso = document.querySelector('select[name="ingreso-reingreso"]').value;
-  var tipoDM = document.querySelector('select[name="tipo-dm"]').value;
-  var deteccion = document.querySelector('select[name="deteccion"]').value;
-  var tratamiento = document.querySelector('select[name="tratamiento"]').value;
-  var covid = document.querySelector('select[name="covid"]').value;
-
-  if (!expediente || !fechaNac || !curp || !entidad || !domicilio || !telefono || !ingreso || !tipoDM || !deteccion || !tratamiento || !covid) {
-    alert('Por favor complete todos los campos obligatorios antes de continuar.');
-    return false;
-  }
-
-  document.getElementById('registro').submit();
-});
-*/
-
