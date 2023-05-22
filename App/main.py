@@ -42,7 +42,7 @@ def update_paciente(expediente):
             where expediente = %s
         """, (_entidadNac, _curp, _sexo, _talla, _domicilio, _telefono, _fechaNac, expediente))
         conn.commit() 
-        flash('Registro')
+        flash('Editado correctamente!')
     return redirect(url_for('tasks')) 
 
 
@@ -57,7 +57,6 @@ def mostrarIdentidad(_expediente):
     cursor.execute("SELECT * FROM visita WHERE paciente_expediente =%s", _expediente)                                                                                                                                   
     visit = cursor.fetchall()                                                                                     
     return render_template('tasks2.html', d = id, d2 = diag, d3 = visit)
-
 
 
 @app.route('/login', methods=['POST'])

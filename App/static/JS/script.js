@@ -118,6 +118,20 @@ var antA = false;
 var diagA = false;
 let loginForm = document.getElementById("registro");
 
+function datosRegistro() {
+  var expediente = document.querySelector('input[name="expediente"]').value;
+  var fechaNac = document.querySelector('input[name="fechaNac"]').value;
+  var curp = document.querySelector('input[name="curp"]').value;
+  var entidad = document.querySelector('input[name="entidad"]').value;
+  var domicilio = document.querySelector('input[name="domicilio"]').value;
+  if (!expediente || !fechaNac || !curp || !entidad || !domicilio) 
+    return false;
+  else
+    return true;
+}
+
+
+
 sigBtn.onclick = function () {
   if (antA) {
     antP.style.display = "none";
@@ -128,11 +142,15 @@ sigBtn.onclick = function () {
     sigBtn.innerHTML = "Registrar Paciente";
   }
   else if (!diagA) {
-    idP.style.display = "none";
-    antP.style.display = "flex";
-    antA = true;
-    sigBtn.classList.add("siguiente");
-    canBtn.classList.add("anterior");
+    if(datosRegistro()){
+      idP.style.display = "none";
+      antP.style.display = "flex";
+      antA = true;
+      sigBtn.classList.add("siguiente");
+      canBtn.classList.add("anterior");
+    }
+    else
+      alert("Llena los campos antes de continuar");
   }
   else {
     loginForm.submit();
@@ -185,7 +203,7 @@ document.getElementById('visiConfirm').addEventListener('click', function (event
 });
 
 //Validar formulario Registro
-document.getElementById('siguiente').addEventListener('click', function (event) {
+/*document.getElementById('siguiente').addEventListener('click', function (event) {
   event.preventDefault();
   var expediente = document.querySelector('input[name="expediente"]').value;
   var fechaNac = document.querySelector('input[name="fechaNac"]').value;
@@ -194,12 +212,9 @@ document.getElementById('siguiente').addEventListener('click', function (event) 
   var domicilio = document.querySelector('input[name="domicilio"]').value;
   var telefono = document.querySelector('input[name="telefono"]').value;
 
-  if (!expediente || !fechaNac || !curp || !entidad || !domicilio || !telefono) {
-    alert('Por favor complete todos los campos obligatorios antes de continuar.');
-  }
-  else
-    document.getElementById('registro').submit();
-});
+  
+});*/
+
 
 /*Validar formulario Registro (se añade Datos del diagnostico)
 document.getElementById('siguiente').addEventListener('click', function(event) {
