@@ -44,9 +44,18 @@ fieldset{
 
 /*Formato de control*/
 .control fieldset{
-    width: 23.33333%;
+     width: 70%;
 }
 
+#v2,#v3{
+    display: none;
+}
+#v2{
+    justify-content: space-around;
+}
+#v3{
+    flex-direction: column;
+}
 .container .control {
     display: none;
     flex-wrap: wrap;
@@ -290,3 +299,10 @@ input[type="checkbox"] {
 }
 /********************************/
 
+.container .farmacologico input[type = text]{
+    width: 150px;
+}
+
+#curp, #dom, #cel, input[type = text]{
+    width: 150px;
+}

@@ -14,6 +14,16 @@ var navC = document.getElementById("consulta");
 
 
 
+var antP = document.getElementById("antecedentes");
+var idP = document.getElementById("identificacion");
+var diagP = document.getElementById("diagnostico");
+var sigBtn = document.getElementById("siguiente");
+var canBtn = document.getElementById("anterior");
+var antA = false;
+var diagA = false;
+let loginForm = document.getElementById("registro");
+
+
 
 // Get the button that opens the modal
 var btn = document.getElementById("srch");
@@ -48,25 +58,66 @@ btn2.onclick = function () {
   //modal.style.display = "block";
 }
 
-visiBtn.onclick = function () {
+function visita () {
   home.style.display = "none";
   control.style.display = "flex";
   //navB.style.display = "none";
   navC.style.display = "block";
 }
 
-vConfBtn.onclick = function () {
+/*vConfBtn.onclick = function () {
   home.style.display = "block";
   control.style.display = "none";
   //navB.style.display = "block";
   navC.style.display = "none";
+}*/
+
+
+
+
+var vPanel1 =  document.getElementById("v1");
+var vPanel2 =  document.getElementById("v2");
+var vPanel3 =  document.getElementById("v3");
+var v2 = false;
+var v3 = false
+
+
+vConfBtn.onclick = function () {
+  if (v2) {
+    vPanel2.style.display = "none";
+    vPanel3.style.display = "flex";
+    v2 = false;
+    v3 = true;
+  }
+  else if (!v3) {
+    vPanel1.style.display = "none";
+    vPanel2.style.display = "flex";
+    v2 = true;
+  }
+  else
+    confirmVisit();
 }
 
 retBtn.onclick = function () {
-  home.style.display = "block";
-  control.style.display = "none";
-  //navB.style.display = "block";
-  navC.style.display = "none";
+  if (v2) {
+    vPanel2.style.display = "none";
+    vPanel1.style.display = "block";
+    v2 = false;
+
+  }
+  else if (v3) {
+    vPanel3.style.display = "none";
+    vPanel2.style.display = "flex";
+    v3 = false;
+    v2 = true;
+  }
+  else
+  {
+    home.style.display = "block";
+    control.style.display = "none";
+    //navB.style.display = "block";
+    navC.style.display = "none";
+  }
 }
 
 
@@ -110,14 +161,7 @@ function suma() {
 }
 
 
-var antP = document.getElementById("antecedentes");
-var idP = document.getElementById("identificacion");
-var diagP = document.getElementById("diagnostico");
-var sigBtn = document.getElementById("siguiente");
-var canBtn = document.getElementById("anterior");
-var antA = false;
-var diagA = false;
-let loginForm = document.getElementById("registro");
+
 
 function datosRegistro() {
   var expediente = document.querySelector('input[name="expediente"]').value;
@@ -225,23 +269,22 @@ loginForm.addEventListener("submit", (e) => {
 });/*/
 
 //Validar formulario Control
-document.getElementById('visiConfirm').addEventListener('click', function (event) {
-  event.preventDefault();
+//document.getElementById('visiConfirm').addEventListener('click', function (event) {
+  function confirmVisit(){
   var fecha = document.querySelector('input[name="fecha"]').value;
   var peso = document.querySelector('input[name="peso"]').value;
-  var talla = document.querySelector('input[name="talla"]').value;
   var control = document.querySelector('select[name="control"]').value;
   var referencia = document.querySelector('input[name="referencia"]').value;
   var baja = document.querySelector('input[name="baja"]').value;
   var farmacologico = document.querySelector('input[name="farmacologico"]').value;
   var nofarmacologico = document.querySelector('input[name="nofarmacologico"]').value;
 
-  if (!fecha || !peso || !talla || !control || !referencia || !baja || !farmacologico || !nofarmacologico) {
+  if (!fecha || !peso || !control || !referencia || !baja || !farmacologico || !nofarmacologico) {
     alert('Por favor complete todos los campos obligatorios antes de continuar.');
   }
   else
     document.getElementById('control').submit();
-});
+}
 
 //Validar formulario Registro
 /*document.getElementById('siguiente').addEventListener('click', function (event) {
@@ -257,7 +300,7 @@ document.getElementById('visiConfirm').addEventListener('click', function (event
 });*/
 
 
-/*Validar formulario Registro (se añade Datos del diagnostico)*/
+/*Validar formulario Registro (se añade Datos del diagnostico)*//*
 document.getElementById('siguiente').addEventListener('click', function(event) {
   event.preventDefault();
   var expediente = document.querySelector('input[name="expediente"]').value;
@@ -279,4 +322,4 @@ document.getElementById('siguiente').addEventListener('click', function(event) {
   }
 
   document.getElementById('registro').submit();
-});
+});*/

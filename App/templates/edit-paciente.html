@@ -14,15 +14,13 @@
   <link rel="icon" href="{{url_for('static', filename='Imgs/buap.png')}}">
 </head>
 
-<body>
+<body style="margin-bottom: 100px;">
   <header> Historias clinicas </header>
 
     <nav>
       <div id="navD">
-        <button class="navB" id="srch">Buscar</button>
-        <button class="navB" id="rgst">Registro</button>
+        <button class="navB">Editar</button>
       </div>
-      <button class="navB" id="consulta">Consulta</button>
     </nav>
   <div class="registro">
     <form action="/update/{{paciente.expediente}}" method="POST" class="editPaciente">
@@ -39,7 +37,7 @@
           </span>
           <span>
             Fecha de nacimiento:
-            <input type="text" name="fechaNac" value = {{paciente.fechaNac}}>
+            <input type="date" name="fechaNac" value = {{paciente.fechaNac}}>
     
           </span>
           <span>
@@ -301,7 +299,7 @@
       </fieldset>
       <fieldset>
         <h3>Observaciones</h3>
-        <textarea name="notas" id="" cols="40" rows="13"></textarea>
+        <textarea name="notas" id="" cols="40" rows="10"></textarea>
         <input type="hidden" id="vistaExp" name="Paciente_expediente" readonly>
       </fieldset>
      

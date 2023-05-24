@@ -139,7 +139,7 @@ def create_postman():
 def create_visita():       
         _fecha = request.form['fecha']
         _peso = request.form['peso']
-        _talla = request.form['talla']
+       # _talla = request.form['talla']
         _cintura = request.form['cintura']
         _trigliceridos = request.form['trigliceridos']	
         _glucemia = request.form['glucemia']
@@ -162,8 +162,8 @@ def create_visita():
  
         conn = mysql.connect()
         cursor = conn.cursor(pymysql.cursors.DictCursor)		
-        sqlQuery = "INSERT INTO visita(fecha, peso, talla, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, ldl, hdl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        bindData = (_fecha, _peso, _talla, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
+        sqlQuery = "INSERT INTO visita(fecha, peso, trigliceridos, glucemia, HbA1c, revisionPies, controlado, complicaciones, referencia, baja, ldl, hdl, cintura, sistolica, diastolica,  noFarmacologico,  farmacologico, observaciones, Paciente_expediente) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        bindData = (_fecha, _peso, _trigliceridos, _glucemia, _HbA1c, _revisionPies, _controlado, _complicaciones, _referencia, _baja, _ldl, _hdl, _cintura, _sistolica, _diastolica, _noFarmacologico, _farmacologico, _observaciones, _Paciente_expediente)            
         cursor.execute(sqlQuery, bindData)
         conn.commit()
         flash('Visita registrada!')

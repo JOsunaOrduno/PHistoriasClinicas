@@ -106,7 +106,7 @@
               </span>
               <span>
                 CURP:
-                <input type="text" name="curp" maxlength="18" onclick="this.value=''">
+                <input type="text" id="curp" name="curp" maxlength="18" onclick="this.value=''">
               </span>
 
               <span>
@@ -129,11 +129,11 @@
               </span>
               <span>
                 Domicilio:
-                <input type="text" name="domicilio" onclick="this.value=''">
+                <input type="text" id="dom" name="domicilio" onclick="this.value=''">
               </span>
               <span>
                 Teléfono:
-                <input type="text" name="telefono" maxlength="15" onclick="this.value=''">
+                <input type="text" id="cel" name="telefono" maxlength="15" onclick="this.value=''">
               </span>
             </div>
           </fieldset>
@@ -269,11 +269,10 @@
 
       <form action="/visita" method="POST" class="control" id="control">
         <h1>Control</h1>
-        <fieldset>
-          <h3>Fecha</h3>
-
-          <input type="date" name="fecha" min="1900-01-01" onclick="this.value=''">
+        <fieldset id="v1">          
           <div class="imc">
+            <h3>Fecha</h3>
+            <input type="date" name="fecha" min="1900-01-01" onclick="this.value=''">
             <span>
               <label for="peso">Peso:</label>
               <input type="number" id="peso" name="peso" size="5" oninput="suma()" min="0" value="70" onclick="this.value=''">
@@ -330,17 +329,21 @@
 
         </fieldset>
 
-        <fieldset>
+        <fieldset id="v2">
           <div id="colesterol">
             <h3>Colesterol</h3>
             <span>
               <label>Total:</label>
               <input type="number" id="total" name="total" size="5" min="0" value="200" onclick="this.value=''">
               <label for="total">mg/dl</label>
+              <br>
               <label for="ldl">LDL:</label>
+              
               <input type="number" id="ldl" name="ldl" size="5" min="0" value="100" onclick="this.value=''">
               <label for="ldl">mg/dl</label>
+              <br>
               <label for="hdl">HDL:</label>
+              
               <input type="number" id="hdl" name="hdl" size="5" min="0" value="35" onclick="this.value=''">
               <label for="hdl">mg/dl</label>
             </span>
@@ -353,28 +356,32 @@
               <label>Sistólica:</label>
               <input type="number" id="sistolica" name="sistolica" size="5" min="0" value="120" onclick="this.value=''">
               <label for="total">mmHG</label>
+              <br>
               <label for="ldl">Diastólica:</label>
               <input type="number" id="diastolica" name="diastolica" size="5" min="0" value="80" onclick="this.value=''">
               <label for="ldl">mmHG</label>
           </div>
 
-          <div>
+          <div class="farmacologico">
             <h3>Tratamiento preescrito</h3>
-            No farmacologico:
-            <input type="text" name="farmacologico" maxlength="15" onclick="this.value=''">
             Farmacologico:
             <input type="text" name="nofarmacologico" maxlength="15" onclick="this.value=''">
+            <br>
+            No farmacologico:
+            <input type="text" name="farmacologico" maxlength="15" onclick="this.value=''">
+            
+            
           </div>           
 
         </fieldset>
-        <fieldset>
+        <fieldset id="v3">
           <h3>Observaciones</h3>
-          <textarea name="notas" id="" cols="40" rows="13"></textarea>
+          <textarea name="notas" id="" cols="40" rows="10"></textarea>
           <input type="hidden" id="vistaExp" name="Paciente_expediente" readonly>
         </fieldset>
         <div class="boton">
           <button class="confirm" type="button" id="return">Cancelar</button>
-          <button class="confirm" type="submit" id="visiConfirm">Confirmar</button>
+          <button class="confirm" type="button" id="visiConfirm">Confirmar</button>
         </div>
 
       </form>
