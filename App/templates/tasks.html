@@ -106,7 +106,7 @@
               </span>
               <span>
                 CURP:
-                <input type="text" id="curp" name="curp" maxlength="18" onclick="this.value=''">
+                <input type="text" id="curp" name="curp" maxlength="16" onclick="this.value=''">
               </span>
 
               <span>
@@ -222,41 +222,41 @@
             <section>
               Ingreso:
               <select name="ingreso-reingreso">
-                <option value="ingreso">Ingreso</option>
-                <option value="reingreso">Reingreso</option>
+                <option value="1">Ingreso</option>
+                <option value="0">Reingreso</option>
               </select>
               <br>
               1. D.M.:
               <select name="tipo-dm">
-                <option value="dm1">1</option>
-                <option value="dm2">2</option>
-                <option value="dm3">Gestacional</option>
-                <option value="dm4">Otro</option>
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">Gestacional</option>
+                <option value="3">Otro</option>
               </select>
               2. HTA:
-              <input type="checkbox" name="hta">
+              <input type="checkbox" name="hta" value="1">
               3. Obesidad:
-              <input type="checkbox" name="obesidad">
+              <input type="checkbox" name="obesidad" value="1">
               4. Dislipidemias:
-              <input type="checkbox" name="dislipidemias">
+              <input type="checkbox" name="dislipidemias" value="1">
               5. Síndrome metabólico:
-              <input type="checkbox" name="metabolico">
+              <input type="checkbox" name="metabolico" value="1">
               6. Sobrepeso:
-              <input type="checkbox" name="sobrepeso"><br>
+              <input type="checkbox" name="sobrepeso" value="1"><br>
               Detección se le realizó por:
               <select name="deteccion">
-                <option value="pesquisa">Pesquisa</option>
-                <option value="sintomatologia">Por sintomatología</option>
+                <option value="1">Pesquisa</option>
+                <option value="0">Por sintomatología</option>
               </select>
               Tratamiento previo:
               <select name="tratamiento">
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
               </select>
               COVID-19:
               <select name="covid">
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
               </select><br>
             </section>
           </fieldset>
@@ -272,7 +272,7 @@
         <fieldset id="v1">          
           <div class="imc">
             <h3>Fecha</h3>
-            <input type="date" name="fecha" min="1900-01-01" onclick="this.value=''">
+            <input type="date" name="fecha" min="1900-01-01">
             <span>
               <label for="peso">Peso:</label>
               <input type="number" id="peso" name="peso" size="5" oninput="suma()" min="0" value="70" onclick="this.value=''">
@@ -280,7 +280,7 @@
             </span>
             <span>
               <label for="talla">Estatura:</label>
-              <input type="number" id="talla" name="talla size="5" oninput="suma()" min="0" value="160" onclick="this.value=''">
+              <input type="number" id="talla" name="talla" size="5" oninput="suma()" min="0" value="160" onclick="this.value=''">
               <label for="talla">cms</label>
             </span>
             <span>
@@ -311,8 +311,8 @@
           <span>
             <label for="control">Paciente: </label>
             <select id="control" name="control">
-              <option value="controlado">Controlado</option>
-              <option value="nocontrolado">No controlado</option>
+              <option value="1">Controlado</option>
+              <option value="0">No controlado</option>
             </select>
             <br>
 
@@ -324,7 +324,7 @@
             Referencia:
             <input type="text" name="referencia" onclick="this.value=''">
             Baja:
-            <input type="text" name="baja" onclick="this.value=''">
+            <input type="date" name="baja" value="0001-01-01">
           </span>
 
         </fieldset>

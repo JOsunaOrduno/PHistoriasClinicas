@@ -313,4 +313,4 @@ def index():
 
 if __name__ == "__main__":
     serve(app, host= IPAddr, port = '8080')
-
+    #app.run(debug="true")

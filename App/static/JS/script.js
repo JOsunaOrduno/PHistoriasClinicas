@@ -58,11 +58,12 @@ btn2.onclick = function () {
   //modal.style.display = "block";
 }
 
-function visita () {
+function visita(id) {
   home.style.display = "none";
   control.style.display = "flex";
   //navB.style.display = "none";
   navC.style.display = "block";
+  document.getElementById("vistaExp").value = id;
 }
 
 /*vConfBtn.onclick = function () {
@@ -282,8 +283,10 @@ loginForm.addEventListener("submit", (e) => {
   if (!fecha || !peso || !control || !referencia || !baja || !farmacologico || !nofarmacologico) {
     alert('Por favor complete todos los campos obligatorios antes de continuar.');
   }
-  else
+  else{
     document.getElementById('control').submit();
+  }
+    
 }
 
 //Validar formulario Registro
