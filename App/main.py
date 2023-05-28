@@ -3,6 +3,11 @@ from app import app
 from config import mysql
 from flask import jsonify, render_template, redirect, url_for
 from flask import flash, request
+from waitress import serve
+
+import socket   
+hostname=socket.gethostname()   
+IPAddr=socket.gethostbyname(hostname) 
 
 
 
@@ -307,5 +312,5 @@ def index():
         return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app, host= IPAddr, port = '8080')
 
